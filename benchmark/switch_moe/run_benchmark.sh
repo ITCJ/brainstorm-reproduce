@@ -3,10 +3,10 @@
 # Licensed under the MIT license.
 
 
-script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
-BRT_DIR=$(cd "${script_dir}/../../" && pwd)
+# script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+# BRT_DIR=$(cd "${script_dir}/../../" && pwd)
 
-export BRT_CACHE_PATH=$BRT_DIR/.cache
+# export BRT_CACHE_PATH=$BRT_DIR/.cache
 
 LAUNCH_ARGS=()
 

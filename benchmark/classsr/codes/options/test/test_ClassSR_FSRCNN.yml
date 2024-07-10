@@ -13,8 +13,8 @@ datasets:
   test_1:
     name: test2k
     mode: LQGT
-    dataroot_GT: /home/v-louyang/brainstorm_project/datasets/DIV2K/test2k/HR/X4
-    dataroot_LQ: /home/v-louyang/brainstorm_project/datasets/DIV2K/test2k/LR/X4
+    dataroot_GT: /root/tcj/brainstorm_project/datasets/DIV2K/test2k/HR/X4
+    dataroot_LQ: /root/tcj/brainstorm_project/datasets/DIV2K/test2k/LR/X4
   # test_2:
   #   name: test4k
   #   mode: LQGT
@@ -34,7 +34,7 @@ network_G:
 
 #### path
 path:
-  pretrain_model_G: /home/v-louyang/brainstorm_project/experiments/pre_trained_models/ClassSR_FSRCNN.pth
+  pretrain_model_G: /root/tcj/brainstorm_project/datasets/DIV2K/checkpoint/ClassSR_FSRCNN.pth
   pretrain_model_classifier: ~
   pretrain_model_G_branch1: ~
   pretrain_model_G_branch2: ~

@@ -1,0 +1,42 @@
+Get devices for measurement successfully!
+#### # Linerar 2 768 3072
+/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/log/kernel_tune/NVIDIA_A800_80GB_PCIe/Linear_forward_input_0_2_768_output_0_2_3072_in_features_768_out_features_3072.json
+#### Find tuned kernel, pass
+----------------------------------------------------------------------
+------------------------------  [ Task Scheduler ]
+----------------------------------------------------------------------
+|  ID  |                       Task Description                        | Latency (ms) | Speed (GFLOPS) | Trials |
+-----------------------------------------------------------------------------------------------------------------
+|    0 |                                         vm_mod_fused_nn_dense |            - |              - |      0 |
+-----------------------------------------------------------------------------------------------------------------
+Estimated total latency: - ms	Trials: 0	Used time : 1 s	Next ID: 0	
+----------------------------------------------------------------------
+------------------------------  [ Search ]
+----------------------------------------------------------------------
+Generate Sketches		#s: 1
+Sample Initial Population	#s: 69	fail_ct: 1979	Time elapsed: 0.88
+GA Iter: 0	Max score: 0.9983	Min score: 0.0003	#Pop: 69	#M+: 0	#M-: 0
+GA Iter: 4	Max score: 0.9999	Min score: 0.9768	#Pop: 128	#M+: 1401	#M-: 0
+EvolutionarySearch		#s: 128	Time elapsed: 4.65
+----------------------------------------------------------------------
+------------------------------  [ Measure ]
+----------------------------------------------------------------------
+Get 64 programs to measure:
+................................................................terminate called after throwing an instance of 'tvm::runtime::InternalError'
+  what():  [13:09:35] /root/tcj/brainstorm_project/brainstorm/3rdparty/tvm/src/runtime/cuda/cuda_module.cc:61: CUDAError: cuModuleUnload(module_[i]) failed with error: CUDA_ERROR_MISALIGNED_ADDRESS
+Stack trace:
+  0: tvm::runtime::SimpleObjAllocator::Handler<tvm::runtime::CUDAModuleNode>::Deleter_(tvm::runtime::Object*)
+  1: tvm::runtime::SimpleObjAllocator::Handler<tvm::runtime::LibraryModuleNode>::Deleter_(tvm::runtime::Object*)
+  2: _ZN3tvm7runtime18SimpleObjAllocator7HandlerINS0_16PackedFuncS
+  3: _ZN3tvm7runtime18SimpleObjAllocator7HandlerINS0_16PackedFuncSubObjIZNS0_9profiling17WrapTimeE
+  4: tvm::runtime::LocalSession::FreeHandle(void*, int)
+  5: tvm::runtime::RPCFreeHandle(tvm::runtime::RPCSession*, tvm::runtime::TVMArgs, tvm::runtime::TVMRetValue*)
+  6: void tvm::runtime::RPCEndpoint::EventHandler::SysCallHandler<void (*)(tvm::runtime::RPCSession*, tvm::runtime::TVMArgs, tvm::runtime::TVMRetValue*)>(void (*)(tvm::runtime::RPCSession*, tvm::runtime::TVMArgs, tvm::runtime::TVMRetValue*))
+  7: tvm::runtime::RPCEndpoint::EventHandler::HandleSyscall(tvm::runtime::RPCCode)
+  8: tvm::runtime::RPCEndpoint::HandleUntilReturnEvent(bool, std::function<void (tvm::runtime::TVMArgs)>)
+  9: tvm::runtime::RPCEndpoint::ServerLoop()
+  10: tvm::runtime::RPCServerLoop(int)
+  11: tvm::runtime::PackedFuncObj::Extractor<tvm::runtime::PackedFuncSubObj<tvm::runtime::{lambda(tvm::runtime::TVMArgs, tvm::runtime::TVMRetValue*)#2}> >::Call(tvm::runtime::PackedFuncObj const*, tvm::runtime::TVMArgs, tvm::runtime::TVMRetValue*)
+  12: TVMFuncCall
+
+

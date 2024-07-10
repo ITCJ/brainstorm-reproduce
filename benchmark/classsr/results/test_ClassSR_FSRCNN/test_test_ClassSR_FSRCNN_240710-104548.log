@@ -1,0 +1,39 @@
+24-07-10 10:45:48.568 - INFO:   name: test_ClassSR_FSRCNN
+  suffix: None
+  model: ClassSR
+  distortion: sr
+  scale: 4
+  patch_size: 32
+  step: 28
+  crop_border: None
+  gpu_ids: [0]
+  add_mask: False
+  datasets:[
+    test_1:[
+      name: test2k
+      mode: LQGT
+      dataroot_GT: /home/v-louyang/brainstorm_project/datasets/DIV2K/test2k/HR/X4
+      dataroot_LQ: /home/v-louyang/brainstorm_project/datasets/DIV2K/test2k/LR/X4
+      phase: test
+      scale: 4
+      data_type: img
+    ]
+  ]
+  network_G:[
+    which_model_G: classSR_3class_fsrcnn_net
+    in_nc: 3
+    out_nc: 3
+    scale: 4
+  ]
+  path:[
+    pretrain_model_G: /home/v-louyang/brainstorm_project/experiments/pre_trained_models/ClassSR_FSRCNN.pth
+    pretrain_model_classifier: None
+    pretrain_model_G_branch1: None
+    pretrain_model_G_branch2: None
+    pretrain_model_G_branch3: None
+    root: /root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/benchmark/classsr
+    results_root: /root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/benchmark/classsr/results/test_ClassSR_FSRCNN
+    log: /root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/benchmark/classsr/results/test_ClassSR_FSRCNN
+  ]
+  is_train: False
+

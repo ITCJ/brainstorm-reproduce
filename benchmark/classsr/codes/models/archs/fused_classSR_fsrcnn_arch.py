@@ -11,7 +11,7 @@ import time
 from typing import Type, List, Union, Tuple
 
 from brt.router import ScatterRouter, GatherRouter
-from brt.runtime.proto_tensor import (
+from brt.router.proto_tensor import (
     make_proto_tensor_from,
     to_torch_tensor,
     collect_proto_attr_stack,

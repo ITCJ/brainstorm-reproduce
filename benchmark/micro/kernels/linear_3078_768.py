@@ -1,6 +1,7 @@
 # Copyright (c) 2022 by Microsoft Corporation.
 # Licensed under the MIT license.
 
+import sys
 import torch
 
 from torch.utils.benchmark import Timer
@@ -12,24 +13,24 @@ from brt.jit.tvm import TVMTuner
 
 from brt.jit.codegen import ModuleKernel
 
-
-all_bs = [
-    # 2,
-    # 4,
-    # 8,
-    # 16,
-    # 32,
-    # 64,
-    # 128,
-    224,
-    320,
-    416,
-    # 512,
-]
+all_bs = list(map(int, sys.argv[1].split(',')))
+# all_bs = [
+#     2,
+#     4,
+#     8,
+#     16,
+#     32,
+#     64,
+#     128,
+#     224,
+#     320,
+#     416,
+#     512
+# ]
 
 
 in_out_features = [
-    # [768, 3072],
+    [768, 3072],
     [3072, 768]
 ]
 
