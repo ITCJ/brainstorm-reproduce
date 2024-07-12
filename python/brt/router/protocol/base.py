@@ -30,7 +30,7 @@ class ProtocolBase(nn.Module):
         self.debug = os.environ.get("BRT_DEBUG", "False").lower() in ["true", "1"]
 
     def forward(self, score: torch.Tensor, *args, **kwargs):
-        decisions = self.make_route_decision(score, *args, **kwargs)
+        decisions = self.make_route_decision(score, *args, **kwargs) #调用子类的make_route_decision
         if self.debug:
             self.check_decision(decisions, score)
         return decisions
@@ -53,6 +53,6 @@ def register_protocol(protocol_type: str) -> Callable:
 
 
 def make_protocol(protocol_type: str, kwargs: Dict[str, Any]) -> ProtocolBase:
-    protocol_cls = Registry.get_sub_cls(protocol_type, ProtocolBase)
+    protocol_cls = Registry.get_sub_cls(protocol_type, ProtocolBase) #根据protocol查找 ProtolBase的子类
     formulated_kwargs = make_kwargs(kwargs)
     return protocol_cls(**formulated_kwargs)

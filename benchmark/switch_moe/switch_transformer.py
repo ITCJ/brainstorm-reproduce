@@ -319,6 +319,7 @@ class SwitchTransformersDenseGatedActDense(nn.Module):
         return hidden_states
 
 
+#TCJ class FusedSwitchTransformersSparseMLP
 class FusedSwitchTransformersSparseMLP(nn.Module):
     r"""
     Implementation of the Switch Transformers Sparse MLP module.
@@ -376,7 +377,8 @@ class FusedSwitchTransformersSparseMLP(nn.Module):
             hidden_states_to_be_routed, router_mask.view(-1, router_mask.size(-1))
         )
         # print(routed_hidden_states.shape)
-        expert_out = self.fused_expert(routed_hidden_states)
+        print(type(routed_hidden_states))
+        expert_out = self.fused_expert(routed_hidden_states) #TCJ fused expert
         next_states = self.gather(expert_out, hidden_states)
         next_states = brt.to_torch_tensor(next_states)
         next_states = next_states.view(origin_shape)
@@ -454,7 +456,7 @@ class BatchmatmulSwitchTransformersSparseMLP(nn.Module):
     def initialize_fused_expert(self):
         self.fused_expert.initialize_weights_from_experts(self.experts)
 
-
+#TCJ class SwitchTransformersSparseMLP
 class SwitchTransformersSparseMLP(nn.Module):
     r"""
     Implementation of the Switch Transformers Sparse MLP module.
@@ -470,9 +472,9 @@ class SwitchTransformersSparseMLP(nn.Module):
         self.router = SwitchTransformersTop1Router(config)
 
         # Step 2: Get the experts
-        self.experts = nn.ModuleDict()
+        self.experts = nn.ModuleDict() #TCJ TO know
         for idx in range(config.num_experts):
-            self.experts[f"expert_{idx}"] = expert_class(config)
+            self.experts[f"expert_{idx}"] = expert_class(config) #专家键名
         self.shape_history = None
         self.history = 0
         self.trace = config.trace
@@ -922,7 +924,7 @@ class SwitchTransformersLayerCrossAttention(nn.Module):
         ]  # add attentions if we output them
         return outputs
 
-
+#TCJ SwitchTransformersBlock
 class SwitchTransformersBlock(nn.Module):
     def __init__(self, config, has_relative_attention_bias=False, is_sparse=False):
         super().__init__()

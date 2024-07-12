@@ -7,7 +7,7 @@ import torch.nn as nn
 from brt.runtime.grid_tensor import GridTensor, init_grid_tensor
 from brt.trace.leaf_node import register_leaf_node
 
-
+#TCJ Annotator
 @register_leaf_node
 class Annotator(nn.Module):
     def __init__(

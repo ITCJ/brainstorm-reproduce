@@ -17,7 +17,7 @@ from brt.jit.codegen import (
     HomoFusedKernel,
 )
 
-
+#TCJ make_jit_kernel
 def make_jit_kernel(
     modules,
     sample_inputs,

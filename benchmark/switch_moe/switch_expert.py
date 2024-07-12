@@ -19,7 +19,7 @@ class FusedSwitchExpert(nn.Module):
         self.ranks = config.ranks
         wi_denses = nn.ModuleList(
             [
-                nn.Linear(config.d_model, config.d_ff, bias=False)
+                nn.Linear(config.d_model, config.d_ff, bias=False) #TCJ 768 to 2048
                 for _ in range(self.num_experts)
             ]
         )
@@ -34,7 +34,7 @@ class FusedSwitchExpert(nn.Module):
             nn.ModuleList(wi_denses),
             sample_inputs,
             opt_level="homo_fuse",
-            rank=config.ranks[0],
+            rank=config.ranks[0], #TCJ rank是什么
         )
         sample_inputs = [torch.randn(i, config.d_ff) for i in self.capacities]
         self.fused_wo = make_jit_kernel(
@@ -44,7 +44,7 @@ class FusedSwitchExpert(nn.Module):
             rank=config.ranks[1],
         )
         self.dropout = nn.Dropout(config.dropout_rate)
-        self.act = ACT2FN[config.dense_act_fn]
+        self.act = ACT2FN[config.dense_act_fn]  #TCJ 选择激活函数
 
     def initialize_weights_from_experts(self, experts: nn.ModuleDict):
         self.fused_wi_standalone_inputs = []
@@ -74,11 +74,11 @@ class FusedSwitchExpert(nn.Module):
         # print(f"capacities: {capacities}")
         wi_out = torch.empty(
             (dispatched_states.shape[0], self.d_ff), device=dispatched_states.device
-        )
+        )       #TCJ dispatched 的具体实现
         self.fused_wi(
             shared_inputs=[dispatched_states, wi_out],
-            standalone_inputs=self.fused_wi_standalone_inputs,
-            capacities=loads_stack[-1],
+            standalone_inputs=self.fused_wi_standalone_inputs, #专家行为控制
+            capacities=loads_stack[-1],  #专家容量控制
         )
         act_out = self.act(wi_out)
         dropout_out = self.dropout(act_out)
