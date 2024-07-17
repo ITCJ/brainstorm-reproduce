@@ -136,7 +136,7 @@ def main():
     config.ranks = [[ranks[0][i] for i in index], [ranks[1][i] for i in index]]
     config.vendor = args.vendor
     config.trace = args.mode == "trace"
-
+ 
     model = SwitchTransformersModel.from_pretrained(model_name, config=config).cuda()
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model.eval()

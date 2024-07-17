@@ -70,21 +70,30 @@ class FusedSwitchExpert(nn.Module):
         # capacities = dispatched_states.loads
         # route_indices = dispatched_states.route_indices
         # score = dispatched_states.score
+        
+        print("---------------FusedSwitchExpert------------------")
+        print(f"dispatched_states.shape: {dispatched_states.shape}")
+        # print(f"route_indices: {route_indices}")
+        # print(f"score: {score}")
 
-        # print(f"capacities: {capacities}")
         wi_out = torch.empty(
             (dispatched_states.shape[0], self.d_ff), device=dispatched_states.device
-        )       #TCJ dispatched 的具体实现
+        )
+        print(f"dispatched_states.shape: {dispatched_states.shape}")
+        print(f"wi_out.shape: {wi_out.shape}")
+        # print(f"self.fused_wi_standalone_inputs: {self.fused_wi_standalone_inputs}")
+        print(f"loads_stack[-1].shape: {loads_stack[-1].shape}")
         self.fused_wi(
             shared_inputs=[dispatched_states, wi_out],
-            standalone_inputs=self.fused_wi_standalone_inputs, #专家行为控制
-            capacities=loads_stack[-1],  #专家容量控制
+            standalone_inputs=self.fused_wi_standalone_inputs, 
+            capacities=loads_stack[-1],  
         )
         act_out = self.act(wi_out)
         dropout_out = self.dropout(act_out)
         wo_out = torch.empty(
             (dispatched_states.shape[0], self.d_model), device=dispatched_states.device
         )
+        print(f"dropout_out.shape: {dropout_out.shape}")
         self.fused_wo(
             shared_inputs=[dropout_out, wo_out],
             standalone_inputs=self.fused_wo_standalone_inputs,
@@ -95,7 +104,7 @@ class FusedSwitchExpert(nn.Module):
         # wo_out.route_indices = route_indices
         # wo_out.score = score
         # wo_out.loads = dispatched_states.loads
-
+        print(f"wo_out.shape: {wo_out.shape}")
         return wo_out
 
 

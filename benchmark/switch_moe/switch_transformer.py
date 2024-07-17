@@ -365,6 +365,13 @@ class FusedSwitchTransformersSparseMLP(nn.Module):
         # Step 1: Get the router_mask from the router as wel as the probabilities
         router_mask, router_probs, router_logits = self.router(hidden_states)
 
+        print("---------FusedSwitchTransformersSparseMLP---------")
+        print("hidden_states.shape:", hidden_states.shape)
+        print("router_mask.shape:", router_mask.shape)
+        print("router_probs.shape:", router_probs.shape)
+        print("router_logits.shape:", router_logits.shape)
+        print("--------------------------------------------------")
+        
         expert_index = torch.argmax(router_mask, dim=-1)
 
         # The routers introduced might not always map all the tokens, to a router, which means that some hidden states
@@ -376,8 +383,13 @@ class FusedSwitchTransformersSparseMLP(nn.Module):
         routed_hidden_states = self.scatter(
             hidden_states_to_be_routed, router_mask.view(-1, router_mask.size(-1))
         )
-        # print(routed_hidden_states.shape)
-        print(type(routed_hidden_states))
+        print("---------FusedSwitchTransformersSparseMLP---------")
+        print("hidden_states_to_be_routed.shape:", hidden_states_to_be_routed.shape)
+        print("routed_hidden_states.shape:", routed_hidden_states.shape)
+        # print("router_probs.shape:", router_probs.shape)
+        # print("router_logits.shape:", router_logits.shape)
+        print("--------------------------------------------------")
+        
         expert_out = self.fused_expert(routed_hidden_states) #TCJ fused expert
         next_states = self.gather(expert_out, hidden_states)
         next_states = brt.to_torch_tensor(next_states)
@@ -550,9 +562,17 @@ class SwitchTransformersLayerFF(nn.Module):
         )
         self.dropout = nn.Dropout(config.dropout_rate)
 
-    def forward(self, hidden_states, output_router_logits):
+    def forward(self, hidden_states, output_router_logits):        
+        # forwarded_states = self.layer_norm(hidden_states)
+        # forwarded_states = self.mlp(forwarded_states)
+
+        print("---------SwitchTransformersLayerFF---------")
+        print("hidden_states.shape:", hidden_states.shape)
         forwarded_states = self.layer_norm(hidden_states)
+        print("forwarded_states.shape:", forwarded_states.shape)
         forwarded_states = self.mlp(forwarded_states)
+        # print("forwarded_states.shape:", forwarded_states.shape)
+        print("------------------------------------------")
 
         if isinstance(forwarded_states, tuple):
             forwarded_states, router_tuple = forwarded_states
@@ -976,6 +996,7 @@ class SwitchTransformersBlock(nn.Module):
         else:
             self_attn_past_key_value, cross_attn_past_key_value = None, None
 
+        #TCJ self attention？
         self_attention_outputs = self.layer[0](
             hidden_states,
             attention_mask=attention_mask,
@@ -1005,7 +1026,8 @@ class SwitchTransformersBlock(nn.Module):
                 query_length = present_key_value_state[0].shape[2]
             else:
                 query_length = None
-
+            
+            #TCJ cross attention
             cross_attention_outputs = self.layer[1](
                 hidden_states,
                 key_value_states=encoder_hidden_states,
@@ -1038,7 +1060,10 @@ class SwitchTransformersBlock(nn.Module):
             # Keep cross-attention outputs and relative position weights
             attention_outputs = attention_outputs + cross_attention_outputs[2:]
 
-        # Apply Feed Forward layer
+        #TCJ Apply Feed Forward layer 
+        print("---------Apply Feed Forward layer---------")
+        print("hidden_states.shape:", hidden_states.shape)
+        print("------------------------------------------")
         hidden_states = self.layer[-1](hidden_states, output_router_logits)
 
         if isinstance(hidden_states, tuple):
@@ -1439,6 +1464,7 @@ class SwitchTransformersStack(SwitchTransformersPreTrainedModel):
 
             router_probs = layer_outputs[-1]
             layer_outputs = layer_outputs[:-1]
+
 
             # layer_outputs is a tuple with:
             # hidden-states, key-value-states, (self-attention position bias), (self-attention weights), (cross-attention position bias), (cross-attention weights)
