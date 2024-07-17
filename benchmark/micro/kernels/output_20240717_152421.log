@@ -1,0 +1,62 @@
+Get devices for measurement successfully!
+#### # Linerar 192 768 3072
+/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/log/kernel_tune/NVIDIA_A800_80GB_PCIe/Linear_forward_input_0_192_768_output_0_192_3072_in_features_768_out_features_3072.json
+/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/log/kernel_tune/NVIDIA_A800_80GB_PCIe/Linear_forward_input_0_192_768_output_0_192_3072_in_features_768_out_features_3072.json
+#### Find tuned kernel, pass
+linear_kernel<function CUDACompiler.create_raw.<locals>.func at 0x7f239cb3fc10>
+Traceback (most recent call last):
+  File "linear_3078_768.py", line 108, in <module>
+    time = Timer(
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/torch/utils/benchmark/utils/timer.py", line 266, in timeit
+    self._timeit(number=max(int(number // 100), 2))
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/torch/utils/benchmark/utils/timer.py", line 256, in _timeit
+    return max(self._timer.timeit(number), 1e-9)
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/timeit.py", line 177, in timeit
+    timing = self.inner(it, self.timer)
+  File "<timeit-src>", line 6, in inner
+  File "/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/python/brt/jit/compiler.py", line 21, in func
+    jit.static_invoke(inputs, extra, __ctx__)
+TypeError: static_invoke(): incompatible function arguments. The following argument types are supported:
+    1. (arg0: List[at::Tensor], arg1: List[int], arg2: int) -> None
+
+Invoked with: ([tensor([[ 1.0604, -0.1823,  0.4931,  ...,  0.5001,  0.3942,  0.8371],
+        [-0.1890,  0.2075, -1.5373,  ..., -1.5904, -0.3712, -1.7420],
+        [-0.6570,  0.6630,  0.0267,  ...,  0.8694,  0.1106, -0.5892],
+        ...,
+        [ 0.1574, -0.1096,  0.0618,  ..., -0.2789,  0.8070,  0.0807],
+        [ 1.0335, -1.3904, -1.5490,  ...,  0.4870, -1.9345, -0.5109],
+        [ 1.1936,  0.6951, -0.6801,  ..., -1.5966,  1.7172,  1.1067]],
+       device='cuda:0')], [Parameter containing:
+tensor([[-0.0164,  0.0136, -0.0342,  ...,  0.0317, -0.0274, -0.0240],
+        [-0.0119, -0.0251,  0.0259,  ...,  0.0252, -0.0352,  0.0150],
+        [ 0.0019, -0.0154, -0.0345,  ...,  0.0047, -0.0105, -0.0245],
+        ...,
+        [-0.0253,  0.0030,  0.0051,  ..., -0.0297,  0.0002,  0.0357],
+        [-0.0307,  0.0219, -0.0197,  ..., -0.0264, -0.0057,  0.0334],
+        [-0.0162,  0.0061, -0.0213,  ..., -0.0273, -0.0008, -0.0149]],
+       device='cuda:0', requires_grad=True)], [tensor([[0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        ...,
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.]], device='cuda:0')], [None]), [], 0
+Exception ignored in: <function LocalRPCMeasureContext.__del__ at 0x7f22f01f9790>
+Traceback (most recent call last):
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/auto_scheduler/measure.py", line 588, in __del__
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 468, in terminate
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 455, in _stop_tracker
+AttributeError: 'NoneType' object has no attribute 'socket'
+Exception ignored in: <function Tracker.__del__ at 0x7f225d124430>
+Traceback (most recent call last):
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 477, in __del__
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 468, in terminate
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 455, in _stop_tracker
+AttributeError: 'NoneType' object has no attribute 'socket'
+Exception ignored in: <function Server.__del__ at 0x7f23a1a89ca0>
+Traceback (most recent call last):
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/server.py", line 493, in __del__
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/server.py", line 489, in terminate
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/contrib/popen_pool.py", line 137, in kill
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/contrib/popen_pool.py", line 43, in kill_child_processes
+ImportError: sys.meta_path is None, Python is likely shutting down

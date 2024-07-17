@@ -377,7 +377,7 @@ class FusedSwitchTransformersSparseMLP(nn.Module):
             hidden_states_to_be_routed, router_mask.view(-1, router_mask.size(-1))
         )
         # print(routed_hidden_states.shape)
-        print(type(routed_hidden_states))
+        # print(type(routed_hidden_states))
         expert_out = self.fused_expert(routed_hidden_states) #TCJ fused expert
         next_states = self.gather(expert_out, hidden_states)
         next_states = brt.to_torch_tensor(next_states)
