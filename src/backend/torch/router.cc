@@ -138,7 +138,7 @@ std::vector<::torch::Tensor> dispatch_with_indices_and_loads(
     const bool& max_path_padding = false,
     const int& max_path_load = 0,
     const bool& is_1d_routing = true,
-    const bool& is_tag_index = false) {
+    const bool& is_tag_index = false) { 
   CHECK_ON_CUDA(in_data);
   CHECK_ON_CUDA(route_indices);
   const at::cuda::OptionalCUDAGuard device_guard(at::device_of(in_data));
@@ -147,6 +147,8 @@ std::vector<::torch::Tensor> dispatch_with_indices_and_loads(
   int cell_num = in_data.size(0);
   int path_num = route_indices.size(1);
 
+  std::cout << "-------------dispatch_with_indices_and_loads-------------" << std::endl;
+  
   if (cell_num == 0) {
     auto out_shape = in_data.sizes().vec();
     at::IntArrayRef out_shape_ref;
@@ -168,6 +170,10 @@ std::vector<::torch::Tensor> dispatch_with_indices_and_loads(
   }
 
   int cell_size = in_data.numel() / cell_num;
+
+  std::cout << "cell_size:" << cell_size << std::endl;
+  std::cout << "in_data.numel():" << in_data.numel() << std::endl;
+  std::cout << "cell_num:" << cell_num << std::endl;
 
   if (!is_1d_routing) {
     cell_size = cell_size / path_num;
@@ -193,17 +199,25 @@ std::vector<::torch::Tensor> dispatch_with_indices_and_loads(
     if (max_path_load > 0) {
       max_path_load_value = max_path_load;
       total_load = max_path_load_value * path_num;
+      std::cout << "max_path_load_value:" << max_path_load_value << std::endl;
+      std::cout << "path_num:" << path_num << std::endl;
+      std::cout << "total_load:" << total_load << std::endl;
     } else {
       max_path_load_value = loads.max().item<int>();
       total_load = max_path_load_value * path_num;
     }
   } else {
     total_load = loads.sum().item<int>();
+    std::cout << "loads.sum().item<int>():" << loads.sum().item<int>() << std::endl;
   }
 
   // process in_data and allocate the device Tensor out_data according to is_1d_routing.
   auto out_shape = in_data.sizes().vec();
   at::IntArrayRef out_shape_ref;
+  
+  std::cout << "out_shape:" << out_shape << std::endl;
+  std::cout << "total_load:" << total_load << std::endl;
+
   auto in_data_to_be_route = in_data;
   if (is_1d_routing) {
     out_shape[0] = total_load;
@@ -217,6 +231,8 @@ std::vector<::torch::Tensor> dispatch_with_indices_and_loads(
     out_shape_ref = at::IntArrayRef(out_shape.data() + 1, out_shape.data() + out_shape.size());
   }
   auto out_data = ::torch::zeros(out_shape_ref, in_data.options());
+  
+  std::cout << "out_shape_ref:" << out_shape_ref << std::endl;
 
   // process gates, if dtype is half, repeat each element to 2 times. In CUDA kernel, we are using
   // half2 operator to calculate output.

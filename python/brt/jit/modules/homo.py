@@ -19,6 +19,7 @@ class HomoFusedModule(FusedModule):
     def __init__(self, module: nn.ModuleList):
         super().__init__(module)
         self._check_homogeneity(self.module)
+        # print(f"self.module:{self.module}")
 
     def _make_global_kernel(
         self,
@@ -27,6 +28,7 @@ class HomoFusedModule(FusedModule):
         objective_func: str = "fastest",
         rank: int = 1,
     ) -> HomoFusedKernel:
+        print("---------------_make_global_kernel@HomoFusedModule---------------")
         capacities = [
             sample_input[0].size(0)
             if isinstance(sample_input, (list, tuple))
@@ -53,7 +55,15 @@ class HomoFusedModule(FusedModule):
             module_kernel = self.jit_submodules[0]._make_global_kernel(
                 inp, method, objective_func, rank[idx]
             )
+            print(f"type(self.jit_submodules[0]):{type(self.jit_submodules[0])}")
+            print(f"module_kernel:{module_kernel}")
             candidates.append(module_kernel)
+        
+        print(f"self.num_submodule:{self.num_submodule}")
+        print(f"capacities:{capacities}")
+        print(f"shared_arg_indices:{shared_arg_indices}")
+        print(f"shared_arg_grans:{shared_arg_grans}")
+        print(f"candidates:{candidates}")
         fused_kernel = HomoFusedKernel(
             self.num_submodule,
             capacities,

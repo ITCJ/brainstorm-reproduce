@@ -24,7 +24,7 @@ __all__ = [
     "ModuleFactory",
 ]
 
-
+#TCJ make_jit_kernel
 def make_jit_kernel(
     modules: Union[nn.Module, nn.ModuleList],
     sample_inputs,
@@ -33,6 +33,7 @@ def make_jit_kernel(
     objective_func: str = "fastest",
     rank: Union[int, List[int]] = 1,
 ) -> Callable[..., None]:
+    print(f"------------make_jit_kernel@factory.py-----------------")
     return ModuleFactory.make_kernel(
         modules,
         sample_inputs=sample_inputs,

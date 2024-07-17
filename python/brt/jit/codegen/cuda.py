@@ -263,6 +263,8 @@ extern "C" __device__ __forceinline__ void CppCgBlockSync(int block_size) {
             self.add_single_c_api()
             self.append_code(func_sig)
             self.append_code(func_body)
+            print(f"-----------------GlobalKernel---------------------")
+            print(self.clean_code)
             # pylint: disable=access-member-before-definition
             return (self.clean_code, self.func_deps, self.func_sig, self.func_body)
             # pylint: enable=access-member-before-definition

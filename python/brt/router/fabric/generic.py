@@ -76,6 +76,15 @@ class DispatchFabric(FabricBase):
         runtime_capacities: torch.Tensor = None,
         score: torch.Tensor = None,
     ) -> Tuple[Union[List[GridTensor], List[List[GridTensor]]], torch.Tensor]:
+        
+        print("---------DispatchFabric input---------")
+        print("in_flow.shape:", in_flow.shape)
+        print("hot_mask.shape:", hot_mask.shape)
+        if runtime_capacities is not None:
+            print("runtime_capacities.shape:", runtime_capacities.shape)
+        print("score.shape:", score.shape)
+        print("--------------------------------------------------")
+    
         if runtime_capacities is not None:
             supported_capacities = runtime_capacities
         else:
@@ -87,6 +96,12 @@ class DispatchFabric(FabricBase):
             path_wise_padding=self.path_wise_padding,
             is_tag_index=False,
         )
+
+        print("---------DispatchFabric stage 1---------")
+        print("route_indices.shape:", route_indices.shape)
+        print("loads.shape:", loads.shape)
+        print("--------------------------------------------------")
+
         if self.flow_num == 1:
             in_flows = [in_flow]
         else:
@@ -97,6 +112,11 @@ class DispatchFabric(FabricBase):
         all_out_flows, score = self.dispatch(in_flows, route_indices, loads, score)
         if self.flow_num == 1:
             all_out_flows = all_out_flows[0]
+
+        print("---------DispatchFabric stage 2---------")
+        print("all_out_flows.shape:", all_out_flows.shape)
+        print("score.shape:", score.shape)
+        print("--------------------------------------------------")
 
         return all_out_flows, score
 

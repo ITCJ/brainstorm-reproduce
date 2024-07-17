@@ -14,9 +14,8 @@ class CUDACompiler:
     def create_raw(source) -> Callable[..., None]:
         torch.cuda.init()
         kernel_type, __ctx__ = jit.inject_source(source)
-
         if kernel_type == "global" or kernel_type == "horiz_fuse":
-
+            print("-------------global@CUDACompiler---------------")
             def func(*inputs, extra=[]):
                 jit.static_invoke(inputs, extra, __ctx__)
 
@@ -26,7 +25,9 @@ class CUDACompiler:
                 jit.hetero_invoke(inputs, active_blocks, __ctx__)
 
         elif kernel_type == "homo_fuse":
-
+            print("-------------homo_fuse@CUDACompiler---------------")
+            print(f"kernel_type:{kernel_type}")
+            print(f"__ctx__:{__ctx__}")
             def func(shared_inputs, standalone_inputs, capacities=[]):
                 jit.homo_invoke(shared_inputs, standalone_inputs, capacities, __ctx__)
 
@@ -36,6 +37,7 @@ class CUDACompiler:
 
     @staticmethod
     def generate_kernel(keyword_dict, template: str) -> Callable[..., None]:
+        print("-------------generate_kernel@CUDACompiler---------------")
         if keyword_dict is not None:
             for key in keyword_dict:
                 template = template.replace("@%s@" % key, str(keyword_dict[key]))

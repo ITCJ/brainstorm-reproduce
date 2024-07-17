@@ -37,6 +37,7 @@ class ModuleBase(ABC):
         #     if isinstance(input, torch.Tensor)
         # ):
         #     return lambda *args, **kwargs: None
+        print(f"-----------------make_kernel@ModuleBase---------------------")
         global_kernel = self._make_global_kernel(
             sample_inputs=sample_inputs,
             method=method,
@@ -49,6 +50,7 @@ class ModuleBase(ABC):
             BRT_KERNEL_TEMPLATE_PATH
             / ("processed_" + global_kernel.func_name[:10] + ".cu")
         )
+        print(f"processed_template_fname:{processed_template_fname}")
         with open(processed_template_fname, "w") as f:
             f.write(kernel_code)
         jit_kernel = CUDACompiler.generate_kernel(None, kernel_code)

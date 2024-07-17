@@ -39,6 +39,14 @@ class LinearModule(AtomModule):
             "in_features": self.module.in_features,
             "out_features": self.module.out_features,
         }
+
+        print(f"---------_make_global_kernel@LinearModule-----------")
+        print(f"self.module_name:{self.module_name}")
+        print(f"method:{method}")
+        print(f"input_infos:{input_infos}")
+        print(f"output_infos:{output_infos}")
+        print(f"parameters:{parameters}")
+        
         return ModuleKernel(
             module_name=self.module_name,
             method=method,
@@ -46,7 +54,7 @@ class LinearModule(AtomModule):
             input_infos=input_infos,
             output_infos=output_infos,
             parameters=parameters,
-        ).load_from_db(objective_func, rank)
+        ).load_from_db(objective_func, rank) #TCJ load kerenel from db
 
     def _extract_shared_arg_infos(
         self, method: str, sample_input: torch.Tensor

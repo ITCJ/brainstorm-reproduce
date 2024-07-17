@@ -97,11 +97,18 @@ class ScatterRouter(RouterBase):
 
     def forward(self, in_flows, score: torch.Tensor):
         hot_mask = self.protocol(score)
+        
         if self.dispatch_score:
             if isinstance(in_flows, List):
                 in_flows = in_flows.append(score)
             else:
                 in_flows = [in_flows, score]
+        
+        print("---------ScatterRouter---------")
+        print("in_flows.shape:", in_flows.shape)
+        print("score.shape:", score.shape)
+        print("hot_mask.shape:", hot_mask.shape)
+        print("--------------------------------------------------")
 
         out_flows, _ = self.fabric(in_flows, hot_mask, None, score)
         return out_flows

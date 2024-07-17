@@ -26,6 +26,7 @@ def make_jit_kernel(
     objective_func: str = "fastest",
     rank: Union[int, List[int]] = 1,
 ) -> Callable[..., None]:
+    print(f"------------make_jit_kernel@_kernel.py-----------------")
     if opt_level is None:
         kernel = ModuleKernelFactory.make_kernel(
             modules, method, sample_inputs, objective_func, rank

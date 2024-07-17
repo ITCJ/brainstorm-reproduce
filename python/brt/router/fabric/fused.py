@@ -36,6 +36,15 @@ class FusedDispatchFabric(DispatchFabric):
         loads: torch.Tensor,
         score: torch.Tensor,
     ) -> Tuple[List[GridTensor], torch.Tensor]:
+        
+        print("---------dispatch@FusedDispatchFabric---------")
+        for flow in in_flows:
+            print("flow.shape:", flow.shape)
+        print("route_indices.shape:", route_indices.shape)
+        print("loads.shape:", loads.shape)
+        print("score.shape:", score.shape)
+        print("--------------------------------------------------")
+
         all_out_flows = []
         for flow_idx, flow in enumerate(in_flows):
             (
@@ -44,6 +53,14 @@ class FusedDispatchFabric(DispatchFabric):
                 flow_load_stack,
                 extra_attr_dict,
             ) = to_torch_tensor(flow, retrieve_attr=True)
+
+            print("---------dispatch@flows_for@FusedDispatchFabric---------")
+            print("flow_data.shape:", flow_data.shape)
+            print("type(flow_tag_stack):", type(flow_tag_stack))
+            print("flow_tag_stack:", flow_tag_stack)
+            print("flow_load_stack:", flow_load_stack)
+            print("extra_attr_dict:", extra_attr_dict)
+            print("--------------------------------------------------")            
 
             flow_tag = flow_tag_stack[-1]
             _flow_load = flow_load_stack[-1]
@@ -64,12 +81,18 @@ class FusedDispatchFabric(DispatchFabric):
                 self.max_path_load,
                 self.route_logics[flow_idx] == "1d",
             )
+            print("---------dispatch@routed_data@FusedDispatchFabric---------")
+            print("routed_data.shape:", routed_data.shape)
+            print("--------------------------------------------------")  
             out_flow = init_grid_tensor(
                 routed_data,
                 flow_tag_stack + [route_indices],
                 flow_load_stack + [loads],
                 flow_extra_attr_dict,
             )
+            print("---------dispatch@out_flow@FusedDispatchFabric---------")
+            print("out_flow.shape:", out_flow.shape)
+            print("--------------------------------------------------") 
             all_out_flows.append(out_flow)
 
         return all_out_flows, score

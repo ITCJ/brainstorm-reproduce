@@ -54,6 +54,30 @@ static void hetero_invoke(const std::vector<::torch::Tensor>& ts,
 static void homo_invoke(const std::vector<::torch::Tensor>& shared_inputs,
                         const std::vector<::torch::Tensor>& standalone_inputs,
                         const ::torch::Tensor& branch_capacities, int fd) {
+  std::cout << "------------homo_invoke@brt@backend------------" << std::endl;
+  for (const auto& tensor : shared_inputs) {
+    std::cout << "shared_inputs Tensor shape: ";
+    for (const auto& size : tensor.sizes()) {
+        std::cout << size << " ";
+    }
+    std::cout << std::endl;
+  }
+
+  for (const auto& tensor : standalone_inputs) {
+    std::cout << "standalone_inputs Tensor shape: ";
+    for (const auto& size : tensor.sizes()) {
+        std::cout << size << " ";
+    }
+    std::cout << std::endl;
+  }
+  
+  std::cout << "branch_capacities Tensor shape: ";
+    for (const auto& size : branch_capacities.sizes()) {
+        std::cout << size << " ";
+    }
+  std::cout << std::endl;
+
+
   auto& compiler = jit::CUDACompiler::GetCompiler();
   std::vector<const void*> shared_inputs_ptr(shared_inputs.size()),
       standalone_inputs_ptr(standalone_inputs.size());

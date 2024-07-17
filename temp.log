@@ -1,0 +1,721 @@
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f96841289a0>
+self.num_submodule:64
+capacities:[2, 4, 8, 16, 32, 512]
+shared_arg_indices:[0, 2]
+shared_arg_grans:[12288, 3072]
+candidates:[<brt.jit.codegen.module.ModuleKernel object at 0x7f96841288b0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9684128910>, <brt.jit.codegen.module.ModuleKernel object at 0x7f96841288e0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9684128940>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9684128970>, <brt.jit.codegen.module.ModuleKernel object at 0x7f96841289a0>]
+--------------------__init__@HomoFusedKernel--------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------homo_fuse@CUDACompiler---------------
+kernel_type:homo_fuse
+__ctx__:15
+------------make_jit_kernel@factory.py-----------------
+-----------------make_kernel@ModuleBase---------------------
+---------------_make_global_kernel@HomoFusedModule---------------
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [2, 768]}
+output_infos:{'output_0': [2, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f967a13d1f0>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [4, 768]}
+output_infos:{'output_0': [4, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f967a13d250>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [8, 768]}
+output_infos:{'output_0': [8, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f967a13d220>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [16, 768]}
+output_infos:{'output_0': [16, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f967a13d280>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [32, 768]}
+output_infos:{'output_0': [32, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f967a13d2b0>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [512, 768]}
+output_infos:{'output_0': [512, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f967a13d2e0>
+self.num_submodule:64
+capacities:[2, 4, 8, 16, 32, 512]
+shared_arg_indices:[0, 2]
+shared_arg_grans:[3072, 12288]
+candidates:[<brt.jit.codegen.module.ModuleKernel object at 0x7f967a13d1f0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f967a13d250>, <brt.jit.codegen.module.ModuleKernel object at 0x7f967a13d220>, <brt.jit.codegen.module.ModuleKernel object at 0x7f967a13d280>, <brt.jit.codegen.module.ModuleKernel object at 0x7f967a13d2b0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f967a13d2e0>]
+--------------------__init__@HomoFusedKernel--------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------homo_fuse@CUDACompiler---------------
+kernel_type:homo_fuse
+__ctx__:16
+------------make_jit_kernel@factory.py-----------------
+-----------------make_kernel@ModuleBase---------------------
+---------------_make_global_kernel@HomoFusedModule---------------
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [2, 3072]}
+output_infos:{'output_0': [2, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f967a13a250>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [4, 3072]}
+output_infos:{'output_0': [4, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f967a13a2b0>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [8, 3072]}
+output_infos:{'output_0': [8, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f967a13a280>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [16, 3072]}
+output_infos:{'output_0': [16, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f967a13a2e0>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [32, 3072]}
+output_infos:{'output_0': [32, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f967a13a310>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [512, 3072]}
+output_infos:{'output_0': [512, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f967a13a340>
+self.num_submodule:64
+capacities:[2, 4, 8, 16, 32, 512]
+shared_arg_indices:[0, 2]
+shared_arg_grans:[12288, 3072]
+candidates:[<brt.jit.codegen.module.ModuleKernel object at 0x7f967a13a250>, <brt.jit.codegen.module.ModuleKernel object at 0x7f967a13a2b0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f967a13a280>, <brt.jit.codegen.module.ModuleKernel object at 0x7f967a13a2e0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f967a13a310>, <brt.jit.codegen.module.ModuleKernel object at 0x7f967a13a340>]
+--------------------__init__@HomoFusedKernel--------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------homo_fuse@CUDACompiler---------------
+kernel_type:homo_fuse
+__ctx__:17
+------------make_jit_kernel@factory.py-----------------
+-----------------make_kernel@ModuleBase---------------------
+---------------_make_global_kernel@HomoFusedModule---------------
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [2, 768]}
+output_infos:{'output_0': [2, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9b50>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [4, 768]}
+output_infos:{'output_0': [4, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9bb0>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [8, 768]}
+output_infos:{'output_0': [8, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9b80>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [16, 768]}
+output_infos:{'output_0': [16, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9be0>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [32, 768]}
+output_infos:{'output_0': [32, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9c10>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [512, 768]}
+output_infos:{'output_0': [512, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9c40>
+self.num_submodule:64
+capacities:[2, 4, 8, 16, 32, 512]
+shared_arg_indices:[0, 2]
+shared_arg_grans:[3072, 12288]
+candidates:[<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9b50>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9bb0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9b80>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9be0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9c10>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9c40>]
+--------------------__init__@HomoFusedKernel--------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------homo_fuse@CUDACompiler---------------
+kernel_type:homo_fuse
+__ctx__:18
+------------make_jit_kernel@factory.py-----------------
+-----------------make_kernel@ModuleBase---------------------
+---------------_make_global_kernel@HomoFusedModule---------------
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [2, 3072]}
+output_infos:{'output_0': [2, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9cd0>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [4, 3072]}
+output_infos:{'output_0': [4, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9bb0>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [8, 3072]}
+output_infos:{'output_0': [8, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9b50>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [16, 3072]}
+output_infos:{'output_0': [16, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9b80>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [32, 3072]}
+output_infos:{'output_0': [32, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9be0>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [512, 3072]}
+output_infos:{'output_0': [512, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9c10>
+self.num_submodule:64
+capacities:[2, 4, 8, 16, 32, 512]
+shared_arg_indices:[0, 2]
+shared_arg_grans:[12288, 3072]
+candidates:[<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9cd0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9bb0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9b50>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9b80>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9be0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ff9c10>]
+--------------------__init__@HomoFusedKernel--------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------homo_fuse@CUDACompiler---------------
+kernel_type:homo_fuse
+__ctx__:19
+------------make_jit_kernel@factory.py-----------------
+-----------------make_kernel@ModuleBase---------------------
+---------------_make_global_kernel@HomoFusedModule---------------
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [2, 768]}
+output_infos:{'output_0': [2, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec24f0>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [4, 768]}
+output_infos:{'output_0': [4, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec2550>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [8, 768]}
+output_infos:{'output_0': [8, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec2520>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [16, 768]}
+output_infos:{'output_0': [16, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec2580>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [32, 768]}
+output_infos:{'output_0': [32, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec25b0>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [512, 768]}
+output_infos:{'output_0': [512, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec25e0>
+self.num_submodule:64
+capacities:[2, 4, 8, 16, 32, 512]
+shared_arg_indices:[0, 2]
+shared_arg_grans:[3072, 12288]
+candidates:[<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec24f0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec2550>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec2520>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec2580>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec25b0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec25e0>]
+--------------------__init__@HomoFusedKernel--------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------homo_fuse@CUDACompiler---------------
+kernel_type:homo_fuse
+__ctx__:20
+------------make_jit_kernel@factory.py-----------------
+-----------------make_kernel@ModuleBase---------------------
+---------------_make_global_kernel@HomoFusedModule---------------
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [2, 3072]}
+output_infos:{'output_0': [2, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec0550>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [4, 3072]}
+output_infos:{'output_0': [4, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec05b0>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [8, 3072]}
+output_infos:{'output_0': [8, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec0580>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [16, 3072]}
+output_infos:{'output_0': [16, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec05e0>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [32, 3072]}
+output_infos:{'output_0': [32, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec0610>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [512, 3072]}
+output_infos:{'output_0': [512, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec0640>
+self.num_submodule:64
+capacities:[2, 4, 8, 16, 32, 512]
+shared_arg_indices:[0, 2]
+shared_arg_grans:[12288, 3072]
+candidates:[<brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec0550>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec05b0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec0580>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec05e0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec0610>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679ec0640>]
+--------------------__init__@HomoFusedKernel--------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------homo_fuse@CUDACompiler---------------
+kernel_type:homo_fuse
+__ctx__:21
+------------make_jit_kernel@factory.py-----------------
+-----------------make_kernel@ModuleBase---------------------
+---------------_make_global_kernel@HomoFusedModule---------------
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [2, 768]}
+output_infos:{'output_0': [2, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83e50>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [4, 768]}
+output_infos:{'output_0': [4, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83eb0>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [8, 768]}
+output_infos:{'output_0': [8, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83e80>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [16, 768]}
+output_infos:{'output_0': [16, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83ee0>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [32, 768]}
+output_infos:{'output_0': [32, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83f10>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [512, 768]}
+output_infos:{'output_0': [512, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83f40>
+self.num_submodule:64
+capacities:[2, 4, 8, 16, 32, 512]
+shared_arg_indices:[0, 2]
+shared_arg_grans:[3072, 12288]
+candidates:[<brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83e50>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83eb0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83e80>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83ee0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83f10>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83f40>]
+--------------------__init__@HomoFusedKernel--------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------homo_fuse@CUDACompiler---------------
+kernel_type:homo_fuse
+__ctx__:22
+------------make_jit_kernel@factory.py-----------------
+-----------------make_kernel@ModuleBase---------------------
+---------------_make_global_kernel@HomoFusedModule---------------
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [2, 3072]}
+output_infos:{'output_0': [2, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83fd0>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [4, 3072]}
+output_infos:{'output_0': [4, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83eb0>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [8, 3072]}
+output_infos:{'output_0': [8, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83e50>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [16, 3072]}
+output_infos:{'output_0': [16, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83e80>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [32, 3072]}
+output_infos:{'output_0': [32, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83ee0>
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [512, 3072]}
+output_infos:{'output_0': [512, 768]}
+parameters:{'in_features': 3072, 'out_features': 768}
+type(self.jit_submodules[0]):<class 'brt.jit.modules.linear.LinearModule'>
+module_kernel:<brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83f10>
+self.num_submodule:64
+capacities:[2, 4, 8, 16, 32, 512]
+shared_arg_indices:[0, 2]
+shared_arg_grans:[12288, 3072]
+candidates:[<brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83fd0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83eb0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83e50>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83e80>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83ee0>, <brt.jit.codegen.module.ModuleKernel object at 0x7f9679d83f10>]
+--------------------__init__@HomoFusedKernel--------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------homo_fuse@CUDACompiler---------------
+kernel_type:homo_fuse
+__ctx__:23
+Loading checkpoint shards: 100%|████████████████████████████████████████████████████████████████████| 2/2 [00:23<00:00, 11.78s/it]
+Some weights of SwitchTransformersModel were not initialized from the model checkpoint at google/switch-base-64 and are newly initialized: ['decoder.block.1.layer.2.mlp.scatter.fabric.supported_capacities', 'decoder.block.11.layer.2.mlp.scatter.fabric.supported_capacities', 'decoder.block.3.layer.2.mlp.scatter.fabric.supported_capacities', 'decoder.block.5.layer.2.mlp.scatter.fabric.supported_capacities', 'decoder.block.7.layer.2.mlp.scatter.fabric.supported_capacities', 'decoder.block.9.layer.2.mlp.scatter.fabric.supported_capacities', 'encoder.block.1.layer.1.mlp.scatter.fabric.supported_capacities', 'encoder.block.11.layer.1.mlp.scatter.fabric.supported_capacities', 'encoder.block.3.layer.1.mlp.scatter.fabric.supported_capacities', 'encoder.block.5.layer.1.mlp.scatter.fabric.supported_capacities', 'encoder.block.7.layer.1.mlp.scatter.fabric.supported_capacities', 'encoder.block.9.layer.1.mlp.scatter.fabric.supported_capacities']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+---------Apply Feed Forward layer---------
+hidden_states.shape: torch.Size([8, 128, 768])
+------------------------------------------
+---------SwitchTransformersLayerFF---------
+hidden_states.shape: torch.Size([8, 128, 768])
+forwarded_states.shape: torch.Size([8, 128, 768])
+------------------------------------------
+---------Apply Feed Forward layer---------
+hidden_states.shape: torch.Size([8, 128, 768])
+------------------------------------------
+---------SwitchTransformersLayerFF---------
+hidden_states.shape: torch.Size([8, 128, 768])
+forwarded_states.shape: torch.Size([8, 128, 768])
+---------FusedSwitchTransformersSparseMLP---------
+hidden_states.shape: torch.Size([8, 128, 768])
+router_mask.shape: torch.Size([8, 128, 64])
+router_probs.shape: torch.Size([8, 128, 1])
+router_logits.shape: torch.Size([8, 128, 64])
+--------------------------------------------------
+---------ScatterRouter---------
+in_flows.shape: torch.Size([1024, 768])
+score.shape: torch.Size([1024, 64])
+hot_mask.shape: torch.Size([1024, 64])
+--------------------------------------------------
+---------DispatchFabric input---------
+in_flow.shape: torch.Size([1024, 768])
+hot_mask.shape: torch.Size([1024, 64])
+score.shape: torch.Size([1024, 64])
+--------------------------------------------------
+---------DispatchFabric stage 1---------
+route_indices.shape: torch.Size([1024, 64])
+loads.shape: torch.Size([64])
+--------------------------------------------------
+---------dispatch@FusedDispatchFabric---------
+flow.shape: torch.Size([1024, 768])
+route_indices.shape: torch.Size([1024, 64])
+loads.shape: torch.Size([64])
+score.shape: torch.Size([1024, 64])
+--------------------------------------------------
+---------dispatch@flows_for@FusedDispatchFabric---------
+flow_data.shape: torch.Size([1024, 768])
+type(flow_tag_stack): <class 'list'>
+flow_tag_stack: [None]
+flow_load_stack: [None]
+extra_attr_dict: {}
+--------------------------------------------------
+-------------dispatch_with_indices_and_loads-------------
+cell_size:768
+in_data.numel():786432
+cell_num:1024
+loads.sum().item<int>():934
+out_shape:1024 768
+total_load:934
+out_shape_ref:[934, 768]
+---------dispatch@routed_data@FusedDispatchFabric---------
+routed_data.shape: torch.Size([934, 768])
+--------------------------------------------------
+---------dispatch@out_flow@FusedDispatchFabric---------
+out_flow.shape: torch.Size([934, 768])
+--------------------------------------------------
+---------DispatchFabric stage 2---------
+all_out_flows.shape: torch.Size([934, 768])
+score.shape: torch.Size([1024, 64])
+--------------------------------------------------
+---------FusedSwitchTransformersSparseMLP---------
+hidden_states_to_be_routed.shape: torch.Size([1024, 768])
+routed_hidden_states.shape: torch.Size([934, 768])
+--------------------------------------------------
+---------------FusedSwitchExpert------------------
+dispatched_states.shape: torch.Size([934, 768])
+wi_out.shape: torch.Size([934, 3072])
+------------homo_invoke@brt@backend------------
+shared_inputs Tensor shape: 934 768 
+shared_inputs Tensor shape: 934 3072 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+standalone_inputs Tensor shape: 3072 768 
+branch_capacities Tensor shape: 64 
+dropout_out.shape: torch.Size([934, 3072])
+------------homo_invoke@brt@backend------------
+shared_inputs Tensor shape: 934 3072 
+shared_inputs Tensor shape: 934 768 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+standalone_inputs Tensor shape: 768 3072 
+branch_capacities Tensor shape: 64 
+wo_out.shape: torch.Size([934, 768])
+------------------------------------------

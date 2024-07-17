@@ -28,7 +28,7 @@ class HomoFusedKernel(HorizFusedKernel):
     ):
         if not hasattr(self, "kernel_type"):
             setattr(self, "kernel_type", "homo_fuse")
-
+        print(f"--------------------__init__@HomoFusedKernel--------------------")
         self.path_num = path_num
         self.capacities = capacities
         self.supported_capacity_num = len(self.capacities)
