@@ -1,0 +1,66 @@
+Get devices for measurement successfully!
+#### # Linerar 32 3072 768
+/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/log/kernel_tune/NVIDIA_A800_80GB_PCIe/Linear_forward_input_0_32_3072_output_0_32_768_in_features_3072_out_features_768.json
+#### Find tuned kernel, pass
+Traceback (most recent call last):
+  File "linear_3078_768.py", line 105, in <module>
+    time = Timer(
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/torch/utils/benchmark/utils/timer.py", line 266, in timeit
+    self._timeit(number=max(int(number // 100), 2))
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/torch/utils/benchmark/utils/timer.py", line 256, in _timeit
+    return max(self._timer.timeit(number), 1e-9)
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/timeit.py", line 177, in timeit
+    timing = self.inner(it, self.timer)
+  File "<timeit-src>", line 6, in inner
+  File "/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/python/brt/jit/compiler.py", line 21, in func
+    jit.static_invoke(inputs, extra, __ctx__)
+TypeError: static_invoke(): incompatible function arguments. The following argument types are supported:
+    1. (arg0: List[at::Tensor], arg1: List[int], arg2: int) -> None
+
+Invoked with: (tensor([[ 0.9777, -0.0571,  0.5943,  ..., -1.6002,  0.7082, -0.0673],
+        [-0.7000, -0.8376, -1.3875,  ...,  0.7397, -0.5435,  1.3648],
+        [ 1.2351, -0.1218, -2.3742,  ..., -1.2210, -0.0525,  0.9799],
+        ...,
+        [ 0.4633, -1.6057,  0.3419,  ...,  0.4932, -0.2237,  1.3724],
+        [ 0.2980,  0.1914,  1.2337,  ...,  1.2270,  0.1392, -0.3118],
+        [-1.1755, -0.5460, -0.4258,  ...,  0.3539, -0.3069, -0.0262]],
+       device='cuda:0'), Parameter containing:
+tensor([[-0.0003,  0.0178, -0.0095,  ...,  0.0073, -0.0156,  0.0145],
+        [ 0.0006, -0.0074,  0.0094,  ..., -0.0085,  0.0079,  0.0123],
+        [-0.0125,  0.0136, -0.0076,  ..., -0.0110, -0.0043, -0.0094],
+        ...,
+        [-0.0066,  0.0042,  0.0177,  ..., -0.0159,  0.0079,  0.0056],
+        [ 0.0015,  0.0144,  0.0086,  ..., -0.0032, -0.0034,  0.0099],
+        [-0.0083, -0.0131,  0.0039,  ..., -0.0157, -0.0140,  0.0082]],
+       device='cuda:0', requires_grad=True), tensor([[ 1.6182e-15,  4.5863e-41,  6.8764e+19,  ...,  0.0000e+00,
+          0.0000e+00,  0.0000e+00],
+        [-2.4175e+24,  4.5859e-41,  0.0000e+00,  ...,         nan,
+          0.0000e+00,  0.0000e+00],
+        [-4.4484e+21,  4.5859e-41,  0.0000e+00,  ...,         nan,
+          0.0000e+00,  0.0000e+00],
+        ...,
+        [        nan,         nan,  0.0000e+00,  ...,         nan,
+          0.0000e+00,  0.0000e+00],
+        [        nan,         nan,  0.0000e+00,  ...,  0.0000e+00,
+          0.0000e+00,  0.0000e+00],
+        [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  ...,  0.0000e+00,
+          0.0000e+00,  0.0000e+00]], device='cuda:0'), None), [], 0
+Exception ignored in: <function LocalRPCMeasureContext.__del__ at 0x7fd7f03df700>
+Traceback (most recent call last):
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/auto_scheduler/measure.py", line 588, in __del__
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 468, in terminate
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 455, in _stop_tracker
+AttributeError: 'NoneType' object has no attribute 'socket'
+Exception ignored in: <function Tracker.__del__ at 0x7fd75bcd83a0>
+Traceback (most recent call last):
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 477, in __del__
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 468, in terminate
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 455, in _stop_tracker
+AttributeError: 'NoneType' object has no attribute 'socket'
+Exception ignored in: <function Server.__del__ at 0x7fd8a063ec10>
+Traceback (most recent call last):
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/server.py", line 493, in __del__
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/server.py", line 489, in terminate
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/contrib/popen_pool.py", line 137, in kill
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/contrib/popen_pool.py", line 43, in kill_child_processes
+ImportError: sys.meta_path is None, Python is likely shutting down
