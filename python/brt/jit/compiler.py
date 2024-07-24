@@ -16,11 +16,12 @@ class CUDACompiler:
         kernel_type, __ctx__ = jit.inject_source(source)
         if kernel_type == "global" or kernel_type == "horiz_fuse":
             print("-------------global@CUDACompiler---------------")
+            print(f"kernel_type:{kernel_type}")
+            print(f"__ctx__{__ctx__}")
             def func(*inputs, extra=[]):
                 jit.static_invoke(inputs, extra, __ctx__)
 
         elif kernel_type == "hetero_fuse":
-
             def func(*inputs, active_blocks=[]):
                 jit.hetero_invoke(inputs, active_blocks, __ctx__)
 

@@ -20,6 +20,7 @@ class HorizFusedKernel(GlobalKernel):
         self,
         candidates: List[ModuleKernel],
     ):
+        print("-----------init@HorizFusedKernel-------------")
         if not hasattr(self, "kernel_type"):
             setattr(self, "kernel_type", "horiz_fuse")
         super().__init__()
@@ -29,11 +30,16 @@ class HorizFusedKernel(GlobalKernel):
             self.initialize()
 
     def initialize(self):
+        print("-------------initialize@HorizFusedKernel-------------")
         self.mangle_candiates()
         self.generate_new_args()
+        print(f"self.device_args{self.device_args}")
         self.infer_shared_memory()
+        print(f"self.shm_sizes{self.shm_sizes}")
         self.calcu_launch_bounds()
+        print(f"self.min_blocks_per_sm:{self.min_blocks_per_sm}")
         self.calcu_culaunch_dims()
+        print(f"self.blockidx_x:{self.blockidx_x}")
         self.initialized = True
 
     def mangle_candiates(self):
@@ -85,6 +91,7 @@ class HorizFusedKernel(GlobalKernel):
                     device_arg += ", "
                 device_arg += f"{arg_name}_{i}"
             self.device_args.append(device_arg)
+
 
     def infer_shared_memory(self):
         self.shm_size_in_bytes = 0

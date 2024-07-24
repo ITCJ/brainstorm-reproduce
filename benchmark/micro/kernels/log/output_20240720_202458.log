@@ -1,0 +1,55 @@
+Get devices for measurement successfully!
+#### # Linerar 192 4096 16384
+/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/log/kernel_tune/NVIDIA_A800_80GB_PCIe/Linear_forward_input_0_192_4096_output_0_192_16384_in_features_4096_out_features_16384.json
+/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/log/kernel_tune/NVIDIA_A800_80GB_PCIe/Linear_forward_input_0_192_4096_output_0_192_16384_in_features_4096_out_features_16384.json
+#### Find tuned kernel, pass
+------------make_jit_kernel@factory.py-----------------
+objective_func:fastest
+-----------------make_kernel@ModuleBase---------------------
+---------_make_global_kernel@LinearModule-----------
+sample_inputs.shape:torch.Size([192, 4096])
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [192, 4096]}
+output_infos:{'output_0': [192, 16384]}
+parameters:{'in_features': 4096, 'out_features': 16384}
+objective_func:fastest
+-------load_from_db@ModuleKernel--------
+identifier:{"device_name": "NVIDIA_A800_80GB_PCIe", "input_infos": {"input_0": [192, 4096]}, "method": "forward", "op_type": "Linear", "output_infos": {"output_0": [192, 16384]}, "parameters": {"in_features": 4096, "out_features": 16384}}
+objective_func:fastest
+self.platform:CUDA_GPU
+self.input_infos:{'input_0': [192, 4096]}
+self.output_infos:{'output_0': [192, 16384]}
+-----------------get_code@GlobalKernel---------------------
+--------------------------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------global@CUDACompiler---------------
+kernel_type:global
+__ctx__0
+-----------------static_invoke-----------------
+input Tensor shapes:
+Tensor shape: 192 x 4096
+Tensor shape: 16384 x 4096
+Tensor shape: 192 x 16384
+Arguments:
+
+Exception ignored in: <function LocalRPCMeasureContext.__del__ at 0x7f7bd8093a60>
+Traceback (most recent call last):
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/auto_scheduler/measure.py", line 588, in __del__
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 468, in terminate
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 455, in _stop_tracker
+AttributeError: 'NoneType' object has no attribute 'socket'
+Exception ignored in: <function Tracker.__del__ at 0x7f7bc713e700>
+Traceback (most recent call last):
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 477, in __del__
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 468, in terminate
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 455, in _stop_tracker
+AttributeError: 'NoneType' object has no attribute 'socket'
+Exception ignored in: <function Server.__del__ at 0x7f7d1b1aef70>
+Traceback (most recent call last):
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/server.py", line 493, in __del__
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/server.py", line 489, in terminate
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/contrib/popen_pool.py", line 137, in kill
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/contrib/popen_pool.py", line 43, in kill_child_processes
+ImportError: sys.meta_path is None, Python is likely shutting down

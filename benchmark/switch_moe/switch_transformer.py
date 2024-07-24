@@ -370,7 +370,6 @@ class FusedSwitchTransformersSparseMLP(nn.Module):
         print("router_mask.shape:", router_mask.shape)
         print("router_probs.shape:", router_probs.shape)
         print("router_logits.shape:", router_logits.shape)
-        print("--------------------------------------------------")
         
         expert_index = torch.argmax(router_mask, dim=-1)
 
@@ -383,7 +382,7 @@ class FusedSwitchTransformersSparseMLP(nn.Module):
         routed_hidden_states = self.scatter(
             hidden_states_to_be_routed, router_mask.view(-1, router_mask.size(-1))
         )
-        print("---------FusedSwitchTransformersSparseMLP---------")
+
         print("hidden_states_to_be_routed.shape:", hidden_states_to_be_routed.shape)
         print("routed_hidden_states.shape:", routed_hidden_states.shape)
         # print("router_probs.shape:", router_probs.shape)
@@ -503,10 +502,12 @@ class SwitchTransformersSparseMLP(nn.Module):
         expert the corresponding hidden states.
 
         """
+        print("---------forward@SwitchTransformersSparseMLP---------")
         # Step 1: Get the router_mask from the router as wel as the probabilities
         router_mask, router_probs, router_logits = self.router(hidden_states)
         expert_index = torch.argmax(router_mask, dim=-1)
-
+        print("router_mask.shape:", router_mask.shape)
+        print("router_mask:", router_mask)
         # The routers introduced might not always map all the tokens, to a router, which means that some hidden states
         # can be unchanged from one layer to another. That is why the hidden states are cloned before updating only the seleced ones.
         if self.trace:
@@ -515,6 +516,7 @@ class SwitchTransformersSparseMLP(nn.Module):
 
         for idx, expert in enumerate(self.experts.values()):
             token_indices = router_mask[:, :, idx].bool()
+            print(f"idx:{idx} token_indices.shape:{token_indices.shape}")
             if self.trace:
                 current_history[idx] = hidden_states[token_indices].shape[0]
             # print(f"expert {idx} shape: {self.shape_history[idx]}")

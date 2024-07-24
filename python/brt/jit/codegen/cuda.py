@@ -250,6 +250,7 @@ extern "C" __device__ __forceinline__ void CppCgBlockSync(int block_size) {
         assert self.initialized is True, "CodeGenerator is not initialized"
         self.reset(mode="global")
         self.add_codeblock(GlobalKernel.common_defines)
+        print(f"-----------------get_code@GlobalKernel---------------------")
         if (
             hasattr(self, "func_deps")
             and hasattr(self, "func_sig")
@@ -263,8 +264,6 @@ extern "C" __device__ __forceinline__ void CppCgBlockSync(int block_size) {
             self.add_single_c_api()
             self.append_code(func_sig)
             self.append_code(func_body)
-            print(f"-----------------GlobalKernel---------------------")
-            print(self.clean_code)
             # pylint: disable=access-member-before-definition
             return (self.clean_code, self.func_deps, self.func_sig, self.func_body)
             # pylint: enable=access-member-before-definition
@@ -273,6 +272,7 @@ extern "C" __device__ __forceinline__ void CppCgBlockSync(int block_size) {
         self.func_sig = self.generate_signature()
         self.func_body = self.generate_body()
         self.verify_code()
+        print(f"--------------------------------------")
         return self.clean_code, self.func_deps, self.func_sig, self.func_body
 
     def perform_mangling(self, mangling_name):

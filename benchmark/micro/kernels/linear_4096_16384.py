@@ -83,15 +83,16 @@ for bs in all_bs:
             else:
                 print("#### Find tuned kernel, pass")
                 #手动读档重新生成代码写入db
-                # tvm_tuner.task_scheduler.load_log_file = str(tvm_tuner.tune_log_file)
-                # tvm_tuner.insert_netlet_to_storage()
+                tvm_tuner.task_scheduler.load_log_file = str(tvm_tuner.tune_log_file)
+                tvm_tuner.tune_netlet()
+                tvm_tuner.insert_netlet_to_storage()
         else:
             print("#### Start tuning kernel")
             tvm_tuner.tune_netlet()
             tvm_tuner.insert_netlet_to_storage()
         
 
-        #TCJ tune fuse 192,4096,16384 kernel
+        # #TCJ tune fuse 192,4096,16384 kernel
         linear0 = torch.nn.Linear(in_features, out_features, bias=False).eval().cuda()
         x0 = torch.randn((bs, in_features)).cuda()
         y0 = torch.randn((bs, out_features)).cuda()
@@ -151,12 +152,12 @@ for bs in all_bs:
     #     print(f"linear.weight.shape:{linear.weight.shape}")
     #     print(f"y.shape:{y.shape}")
 
-    #     linear_kernel(x, linear.weight, y)
+    #     # linear_kernel(x, linear.weight, y)
 
-        # time = Timer(
-        #     stmt="y = torch.empty(oshape).cuda(); model(x, weight, y)",  # 测量的语句
-        #     setup="import torch",   #前置代码
-        #     globals={"model":linear_kernel, "x": x, "y": y, "weight": linear.weight, "oshape": (bs, out_features)} 
-        # ).timeit(1000).mean * 1e6
+    #     time = Timer(
+    #         stmt="model(x, weight, y)",  # 测量的语句
+    #         setup="import torch",   #前置代码
+    #         globals={"model":linear_kernel, "x": x, "y": y, "weight": linear.weight} 
+    #     ).timeit(1000).mean * 1e6
 
-        # print(f"{rank = }, {time}")
+    #     print(f"{rank = }, {time}")

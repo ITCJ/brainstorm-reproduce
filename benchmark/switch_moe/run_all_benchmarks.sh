@@ -9,16 +9,16 @@ export BRT_CACHE_PATH=/root/siton-data-guoguodata/tcj/brainstorm_project/brainst
 rm -rf "$BRT_CACHE_PATH"/results/switch_moe/e2e.csv
 
 vendors=(
-    torch
-    batchmatmul
+    # torch
+    # batchmatmul
     brt
 )
 
 experts=(
     # 8
-    # 16
+    16
     # 32
-    64
+    # 64
     # 128
     # 256
 )

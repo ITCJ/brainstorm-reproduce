@@ -1,0 +1,25 @@
+Get devices for measurement successfully!
+#### # Linerar 192 4096 16384
+/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/log/kernel_tune/NVIDIA_A800_80GB_PCIe/Linear_forward_input_0_192_4096_output_0_192_16384_in_features_4096_out_features_16384.json
+/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/log/kernel_tune/NVIDIA_A800_80GB_PCIe/Linear_forward_input_0_192_4096_output_0_192_16384_in_features_4096_out_features_16384.json
+#### Find tuned kernel, pass
+----------------------------------------------------------------------
+------------------------------  [ Task Scheduler ]
+----------------------------------------------------------------------
+|  ID  |                       Task Description                        | Latency (ms) | Speed (GFLOPS) | Trials |
+-----------------------------------------------------------------------------------------------------------------
+|    0 |                                         vm_mod_fused_nn_dense |            - |              - |      0 |
+-----------------------------------------------------------------------------------------------------------------
+Estimated total latency: - ms	Trials: 0	Used time : 5 s	Next ID: 0	
+----------------------------------------------------------------------
+------------------------------  [ Search ]
+----------------------------------------------------------------------
+Generate Sketches		#s: 1
+Sample Initial Population	#s: 71	fail_ct: 4025	Time elapsed: 2.80
+GA Iter: 0	Max score: 0.9997	Min score: 0.0065	#Pop: 71	#M+: 0	#M-: 0
+GA Iter: 4	Max score: 0.9999	Min score: 0.9788	#Pop: 128	#M+: 1398	#M-: 0
+EvolutionarySearch		#s: 128	Time elapsed: 32.40
+----------------------------------------------------------------------
+------------------------------  [ Measure ]
+----------------------------------------------------------------------
+Get 64 programs to measure:

@@ -1,0 +1,166 @@
+Get devices for measurement successfully!
+#### # Linerar 192 768 3072
+/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/log/kernel_tune/NVIDIA_A800_80GB_PCIe/Linear_forward_input_0_192_768_output_0_192_3072_in_features_768_out_features_3072.json
+/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/log/kernel_tune/NVIDIA_A800_80GB_PCIe/Linear_forward_input_0_192_768_output_0_192_3072_in_features_768_out_features_3072.json
+#### Find tuned kernel, pass
+-----------------get_code@GlobalKernel---------------------
+--------------------------------------
+------------make_jit_kernel@factory.py-----------------
+-----------------make_kernel@ModuleBase---------------------
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [192, 768]}
+output_infos:{'output_0': [192, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+-----------------get_code@GlobalKernel---------------------
+--------------------------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------global@CUDACompiler---------------
+rank = 1, 244.6358950110152
+------------make_jit_kernel@factory.py-----------------
+-----------------make_kernel@ModuleBase---------------------
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [192, 768]}
+output_infos:{'output_0': [192, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+-----------------get_code@GlobalKernel---------------------
+--------------------------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------global@CUDACompiler---------------
+rank = 2, 416.91436199471354
+------------make_jit_kernel@factory.py-----------------
+-----------------make_kernel@ModuleBase---------------------
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [192, 768]}
+output_infos:{'output_0': [192, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+-----------------get_code@GlobalKernel---------------------
+--------------------------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------global@CUDACompiler---------------
+rank = 3, 450.85695502348244
+------------make_jit_kernel@factory.py-----------------
+-----------------make_kernel@ModuleBase---------------------
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [192, 768]}
+output_infos:{'output_0': [192, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+-----------------get_code@GlobalKernel---------------------
+--------------------------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------global@CUDACompiler---------------
+rank = 4, 408.84881000965834
+------------make_jit_kernel@factory.py-----------------
+-----------------make_kernel@ModuleBase---------------------
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [192, 768]}
+output_infos:{'output_0': [192, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+-----------------get_code@GlobalKernel---------------------
+--------------------------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------global@CUDACompiler---------------
+rank = 5, 340.79553408082575
+------------make_jit_kernel@factory.py-----------------
+-----------------make_kernel@ModuleBase---------------------
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [192, 768]}
+output_infos:{'output_0': [192, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+-----------------get_code@GlobalKernel---------------------
+--------------------------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------global@CUDACompiler---------------
+rank = 6, 324.933216907084
+------------make_jit_kernel@factory.py-----------------
+-----------------make_kernel@ModuleBase---------------------
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [192, 768]}
+output_infos:{'output_0': [192, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+-----------------get_code@GlobalKernel---------------------
+--------------------------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------global@CUDACompiler---------------
+rank = 7, 325.45349397696555
+------------make_jit_kernel@factory.py-----------------
+-----------------make_kernel@ModuleBase---------------------
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [192, 768]}
+output_infos:{'output_0': [192, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+-----------------get_code@GlobalKernel---------------------
+--------------------------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------global@CUDACompiler---------------
+rank = 8, 550.9869600646198
+------------make_jit_kernel@factory.py-----------------
+-----------------make_kernel@ModuleBase---------------------
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [192, 768]}
+output_infos:{'output_0': [192, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+-----------------get_code@GlobalKernel---------------------
+--------------------------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------global@CUDACompiler---------------
+rank = 9, 323.9325269823894
+------------make_jit_kernel@factory.py-----------------
+-----------------make_kernel@ModuleBase---------------------
+---------_make_global_kernel@LinearModule-----------
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [192, 768]}
+output_infos:{'output_0': [192, 3072]}
+parameters:{'in_features': 768, 'out_features': 3072}
+-----------------get_code@GlobalKernel---------------------
+--------------------------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------global@CUDACompiler---------------
+rank = 10, 536.8262589909136
+Exception ignored in: <function LocalRPCMeasureContext.__del__ at 0x7f88b02f89d0>
+Traceback (most recent call last):
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/auto_scheduler/measure.py", line 588, in __del__
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 468, in terminate
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 455, in _stop_tracker
+AttributeError: 'NoneType' object has no attribute 'socket'
+Exception ignored in: <function Tracker.__del__ at 0x7f881d226670>
+Traceback (most recent call last):
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 477, in __del__
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 468, in terminate
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 455, in _stop_tracker
+AttributeError: 'NoneType' object has no attribute 'socket'
+Exception ignored in: <function Server.__del__ at 0x7f8961b85ee0>
+Traceback (most recent call last):
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/server.py", line 493, in __del__
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/server.py", line 489, in terminate
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/contrib/popen_pool.py", line 137, in kill
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/contrib/popen_pool.py", line 43, in kill_child_processes
+ImportError: sys.meta_path is None, Python is likely shutting down

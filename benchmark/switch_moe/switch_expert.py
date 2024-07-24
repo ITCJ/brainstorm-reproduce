@@ -81,11 +81,11 @@ class FusedSwitchExpert(nn.Module):
         )
         print(f"dispatched_states.shape: {dispatched_states.shape}")
         print(f"wi_out.shape: {wi_out.shape}")
-        # print(f"self.fused_wi_standalone_inputs: {self.fused_wi_standalone_inputs}")
+        print(f"self.fused_wi_standalone_inputs: {self.fused_wi_standalone_inputs}")
         print(f"loads_stack[-1].shape: {loads_stack[-1].shape}")
         self.fused_wi(
-            shared_inputs=[dispatched_states, wi_out],
-            standalone_inputs=self.fused_wi_standalone_inputs, 
+            shared_inputs=[dispatched_states, wi_out],  #输入数据
+            standalone_inputs=self.fused_wi_standalone_inputs,  #专家模型参数
             capacities=loads_stack[-1],  
         )
         act_out = self.act(wi_out)

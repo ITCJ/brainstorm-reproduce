@@ -29,6 +29,7 @@ class HomoFusedModule(FusedModule):
         rank: int = 1,
     ) -> HomoFusedKernel:
         print("---------------_make_global_kernel@HomoFusedModule---------------")
+        # print(f"sample_inputs.shape:{sample_inputs.shape}")
         capacities = [
             sample_input[0].size(0)
             if isinstance(sample_input, (list, tuple))
@@ -45,20 +46,26 @@ class HomoFusedModule(FusedModule):
         ]._extract_shared_arg_infos(method, sample_inputs[0])
         assert shared_arg_indices is not None, "shared_arg_indices is None"
         assert shared_arg_grans is not None, "shared_arg_grans is None"
-
+        # print(f"sample_inputs.shape:{sample_inputs.shape}")
         candidates = []
         if isinstance(rank, int):
             rank = [rank] * len(sample_inputs)
         else:
             assert len(rank) == len(sample_inputs)
+    
         for idx, inp in enumerate(sample_inputs):
+            print(f"objective_func:{objective_func}")
+            print(f"type(self.jit_submodules[0]):{type(self.jit_submodules[0])}")
+            print(f"inp.shape:{inp.shape}")
+            print(f"idx:{idx}")
+            print(f"rank[idx]:{rank[idx]}")
+
             module_kernel = self.jit_submodules[0]._make_global_kernel(
                 inp, method, objective_func, rank[idx]
             )
-            print(f"type(self.jit_submodules[0]):{type(self.jit_submodules[0])}")
             print(f"module_kernel:{module_kernel}")
             candidates.append(module_kernel)
-        
+        # print(f"sample_inputs.shape:{sample_inputs.shape}")
         print(f"self.num_submodule:{self.num_submodule}")
         print(f"capacities:{capacities}")
         print(f"shared_arg_indices:{shared_arg_indices}")

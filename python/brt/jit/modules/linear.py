@@ -41,11 +41,13 @@ class LinearModule(AtomModule):
         }
 
         print(f"---------_make_global_kernel@LinearModule-----------")
+        print(f"sample_inputs.shape:{sample_inputs.shape}")
         print(f"self.module_name:{self.module_name}")
         print(f"method:{method}")
         print(f"input_infos:{input_infos}")
         print(f"output_infos:{output_infos}")
         print(f"parameters:{parameters}")
+        print(f"objective_func:{objective_func}")
         
         return ModuleKernel(
             module_name=self.module_name,

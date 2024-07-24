@@ -34,6 +34,7 @@ def make_jit_kernel(
     rank: Union[int, List[int]] = 1,
 ) -> Callable[..., None]:
     print(f"------------make_jit_kernel@factory.py-----------------")
+    # print(f"sample_inputs.shape:{sample_inputs.shape}")
     return ModuleFactory.make_kernel(
         modules,
         sample_inputs=sample_inputs,
@@ -88,6 +89,7 @@ class ModuleFactory:
         objective_func: str = "fastest",
         rank: Union[int, List[int]] = 1,
     ) -> Callable[..., None]:
+        print(f"objective_func:{objective_func}")
         jit_module = JitModuleFactory.produce(modules, opt_level)
         return jit_module.make_kernel(
             sample_inputs=sample_inputs,

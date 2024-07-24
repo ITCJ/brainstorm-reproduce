@@ -1,0 +1,126 @@
+Get devices for measurement successfully!
+#### # Linerar 192 4096 16384
+/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/log/kernel_tune/NVIDIA_A800_80GB_PCIe/Linear_forward_input_0_192_4096_output_0_192_16384_in_features_4096_out_features_16384.json
+/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/log/kernel_tune/NVIDIA_A800_80GB_PCIe/Linear_forward_input_0_192_4096_output_0_192_16384_in_features_4096_out_features_16384.json
+#### Find tuned kernel, pass
+type(x)<class 'list'>
+type(y)<class 'list'>
+type(linear.weight)<class 'torch.nn.parameter.Parameter'>
+----------------make_jit_kernel@linear_4096.py-----------------
+------------make_jit_kernel@factory.py-----------------
+objective_func:fastest
+-----------------make_kernel@ModuleBase---------------------
+---------_make_global_kernel@LinearModule-----------
+sample_inputs.shape:torch.Size([192, 4096])
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [192, 4096]}
+output_infos:{'output_0': [192, 16384]}
+parameters:{'in_features': 4096, 'out_features': 16384}
+objective_func:fastest
+-------load_from_db@ModuleKernel--------
+identifier:{"device_name": "NVIDIA_A800_80GB_PCIe", "input_infos": {"input_0": [192, 4096]}, "method": "forward", "op_type": "Linear", "output_infos": {"output_0": [192, 16384]}, "parameters": {"in_features": 4096, "out_features": 16384}}
+objective_func:fastest
+self.platform:CUDA_GPU
+self.input_infos:{'input_0': [192, 4096]}
+self.output_infos:{'output_0': [192, 16384]}
+---------_make_global_kernel@LinearModule-----------
+sample_inputs.shape:torch.Size([192, 4096])
+self.module_name:Linear
+method:forward
+input_infos:{'input_0': [192, 4096]}
+output_infos:{'output_0': [192, 16384]}
+parameters:{'in_features': 4096, 'out_features': 16384}
+objective_func:fastest
+-------load_from_db@ModuleKernel--------
+identifier:{"device_name": "NVIDIA_A800_80GB_PCIe", "input_infos": {"input_0": [192, 4096]}, "method": "forward", "op_type": "Linear", "output_infos": {"output_0": [192, 16384]}, "parameters": {"in_features": 4096, "out_features": 16384}}
+objective_func:fastest
+self.platform:CUDA_GPU
+self.input_infos:{'input_0': [192, 4096]}
+self.output_infos:{'output_0': [192, 16384]}
+-----------init@HorizFusedKernel-------------
+-------------initialize@HorizFusedKernel-------------
+self.device_args['placeholder_0, placeholder1_0, T_matmul_NT_0', 'placeholder_1, placeholder1_1, T_matmul_NT_1']
+self.shm_sizes[8192]
+self.min_blocks_per_sm:1
+self.blockidx_x:2048
+-----------------get_code@GlobalKernel---------------------
+--------------------------------------
+processed_template_fname:/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/.cache/kernel_template/processed_Linear__in.cu
+-------------generate_kernel@CUDACompiler---------------
+-------------global@CUDACompiler---------------
+kernel_typehoriz_fuse
+__ctx__0
+----------------execute_kernel@linear_4096.py-----------------
+Traceback (most recent call last):
+  File "linear_4096_16384.py", line 117, in <module>
+    model(x, weight, y)
+  File "/root/siton-data-guoguodata/tcj/brainstorm_project/brainstorm/python/brt/jit/compiler.py", line 22, in func
+    jit.static_invoke(inputs, extra, __ctx__)
+TypeError: static_invoke(): incompatible function arguments. The following argument types are supported:
+    1. (arg0: List[at::Tensor], arg1: List[int], arg2: int) -> None
+
+Invoked with: ([tensor([[ 0.0677, -0.9830, -0.6222,  ...,  0.5356, -0.5046,  0.3561],
+        [ 0.7860, -1.2509, -0.1004,  ..., -0.9698,  0.3403, -1.5266],
+        [-0.0408,  0.3015,  2.0248,  ..., -0.2399, -0.6605, -0.6533],
+        ...,
+        [-0.2677,  0.5001,  0.5700,  ...,  1.4637,  0.2109, -0.0922],
+        [ 1.1417,  0.8192, -1.4623,  ...,  1.1791,  0.4967, -0.7989],
+        [ 1.1098,  1.1035, -1.0000,  ..., -0.5434,  0.1653, -0.0199]],
+       device='cuda:0'), tensor([[ 0.0677, -0.9830, -0.6222,  ...,  0.5356, -0.5046,  0.3561],
+        [ 0.7860, -1.2509, -0.1004,  ..., -0.9698,  0.3403, -1.5266],
+        [-0.0408,  0.3015,  2.0248,  ..., -0.2399, -0.6605, -0.6533],
+        ...,
+        [-0.2677,  0.5001,  0.5700,  ...,  1.4637,  0.2109, -0.0922],
+        [ 1.1417,  0.8192, -1.4623,  ...,  1.1791,  0.4967, -0.7989],
+        [ 1.1098,  1.1035, -1.0000,  ..., -0.5434,  0.1653, -0.0199]],
+       device='cuda:0')], [Parameter containing:
+tensor([[ 0.0114,  0.0027,  0.0129,  ...,  0.0022, -0.0113,  0.0006],
+        [ 0.0146, -0.0052,  0.0128,  ...,  0.0121, -0.0049, -0.0017],
+        [ 0.0043,  0.0107,  0.0042,  ...,  0.0106,  0.0099, -0.0127],
+        ...,
+        [ 0.0018,  0.0016, -0.0002,  ...,  0.0031,  0.0036,  0.0036],
+        [-0.0034, -0.0031,  0.0041,  ..., -0.0116,  0.0093, -0.0072],
+        [ 0.0132, -0.0144, -0.0030,  ...,  0.0143, -0.0142,  0.0117]],
+       device='cuda:0', requires_grad=True), Parameter containing:
+tensor([[ 0.0114,  0.0027,  0.0129,  ...,  0.0022, -0.0113,  0.0006],
+        [ 0.0146, -0.0052,  0.0128,  ...,  0.0121, -0.0049, -0.0017],
+        [ 0.0043,  0.0107,  0.0042,  ...,  0.0106,  0.0099, -0.0127],
+        ...,
+        [ 0.0018,  0.0016, -0.0002,  ...,  0.0031,  0.0036,  0.0036],
+        [-0.0034, -0.0031,  0.0041,  ..., -0.0116,  0.0093, -0.0072],
+        [ 0.0132, -0.0144, -0.0030,  ...,  0.0143, -0.0142,  0.0117]],
+       device='cuda:0', requires_grad=True)], [tensor([[ 0.0444,  0.1720, -1.8118,  ..., -1.1113, -0.3293,  0.8035],
+        [-1.3720, -1.1439, -0.1773,  ..., -1.3104, -0.4279,  0.2931],
+        [-1.8074,  1.4161, -0.3492,  ..., -0.1594, -2.0356,  0.1133],
+        ...,
+        [ 0.2874,  1.2778, -0.4709,  ...,  0.9581, -0.0289, -1.7927],
+        [-0.4708, -1.0714,  0.2258,  ...,  0.2417,  0.5152,  0.4099],
+        [-0.2228,  0.1270, -0.3625,  ..., -0.7624, -0.1092,  1.9261]],
+       device='cuda:0'), tensor([[ 0.0444,  0.1720, -1.8118,  ..., -1.1113, -0.3293,  0.8035],
+        [-1.3720, -1.1439, -0.1773,  ..., -1.3104, -0.4279,  0.2931],
+        [-1.8074,  1.4161, -0.3492,  ..., -0.1594, -2.0356,  0.1133],
+        ...,
+        [ 0.2874,  1.2778, -0.4709,  ...,  0.9581, -0.0289, -1.7927],
+        [-0.4708, -1.0714,  0.2258,  ...,  0.2417,  0.5152,  0.4099],
+        [-0.2228,  0.1270, -0.3625,  ..., -0.7624, -0.1092,  1.9261]],
+       device='cuda:0')]), [], 0
+Exception ignored in: <function LocalRPCMeasureContext.__del__ at 0x7fd21c6cb9d0>
+Traceback (most recent call last):
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/auto_scheduler/measure.py", line 588, in __del__
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 468, in terminate
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 455, in _stop_tracker
+AttributeError: 'NoneType' object has no attribute 'socket'
+Exception ignored in: <function Tracker.__del__ at 0x7fd189755670>
+Traceback (most recent call last):
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 477, in __del__
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 468, in terminate
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/tracker.py", line 455, in _stop_tracker
+AttributeError: 'NoneType' object has no attribute 'socket'
+Exception ignored in: <function Server.__del__ at 0x7fd2dd7d5ee0>
+Traceback (most recent call last):
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/server.py", line 493, in __del__
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/rpc/server.py", line 489, in terminate
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/contrib/popen_pool.py", line 137, in kill
+  File "/root/siton-data-guoguodata/tcj/miniconda3/lib/python3.8/site-packages/tvm/contrib/popen_pool.py", line 43, in kill_child_processes
+ImportError: sys.meta_path is None, Python is likely shutting down

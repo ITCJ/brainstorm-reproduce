@@ -38,6 +38,7 @@ class ModuleBase(ABC):
         # ):
         #     return lambda *args, **kwargs: None
         print(f"-----------------make_kernel@ModuleBase---------------------")
+        # print(f"sample_inputs.shape:{sample_inputs.shape}") #TCJ sample_inputs is list
         global_kernel = self._make_global_kernel(
             sample_inputs=sample_inputs,
             method=method,
@@ -51,6 +52,7 @@ class ModuleBase(ABC):
             / ("processed_" + global_kernel.func_name[:10] + ".cu")
         )
         print(f"processed_template_fname:{processed_template_fname}")
+        # print(f"kernel_code:{kernel_code}")  #TCJ Fused Kernel Code在此前产生
         with open(processed_template_fname, "w") as f:
             f.write(kernel_code)
         jit_kernel = CUDACompiler.generate_kernel(None, kernel_code)

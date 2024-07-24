@@ -73,6 +73,7 @@ def main():
     if args.expert == 8 and args.vendor == "brt":
         args.vendor = "batchmatmul"
     if args.expert in [16]:
+        print(args.expert)
         index = capacity_index[0]
     else:
         index = capacity_index[1]

@@ -238,13 +238,19 @@ class ModuleKernel(GlobalKernel):
         return self
 
     def load_from_db(self, objective_func: str = "fastest", rank: int = 1):
+        print("-------load_from_db@ModuleKernel--------")
         identifier = self.make_identifier()
+        print(f"identifier:{identifier}")
+        print(f"objective_func:{objective_func}")
+        print(f"self.platform:{self.platform}")
+        print(f"self.input_infos:{self.input_infos}")
+        print(f"self.output_infos:{self.output_infos}")
         fetched_kernel = kernel_storager.query_kernel(
             identifier, self.platform, objective_func, rank
         )
         if fetched_kernel is None:
             raise ValueError(
-                f"No kernel found in database with {identifier = }, {objective_func = }, {self.platform =}, {self.platform =}, {rank =}"
+                f"No kernel found in database with \n{identifier = }, \n{objective_func = }, \n{self.platform =}, \n{rank =}"
             )
         attribute_dict = json.loads(fetched_kernel[3])
         function_dict = json.loads(fetched_kernel[6])

@@ -11,17 +11,40 @@ namespace backend {
 
 namespace torch {
 
+//TCJ dynamic invoke cuda kernel
 static void static_invoke(const std::vector<::torch::Tensor>& ts, const std::vector<long>& args,
                           int fd) {
-  std::vector<const void*> pargs(ts.size() + args.size()), ppargs(ts.size() + args.size());
+  std::cout << "-----------------static_invoke-----------------" << std::endl;
+  std::cout << "input Tensor shapes:" << std::endl;
+  for (const auto& t : ts) {
+    auto sizes = t.sizes();
+    std::cout << "Tensor shape: ";
+      for (size_t i = 0; i < sizes.size(); ++i) {
+        std::cout << sizes[i];
+        if (i < sizes.size() - 1) {
+            std::cout << " x ";
+        }
+      }
+      std::cout << std::endl;
+  }
+
+  std::cout << "Arguments:" << std::endl;
+  for (const auto& arg : args) {
+      std::cout << arg << " ";
+  }
+  std::cout << std::endl;
+
+  std::cout << "fd:" << fd <<std::endl;
+
+  std::vector<const void*> pargs(ts.size() + args.size()), ppargs(ts.size() + args.size()); //创建两个类型和大小相同的vector容器
   for (int i = 0; i < (int)ts.size(); ++i) {
     CHECK_ON_CUDA(ts[i]);
-    pargs[i] = ts[i].data_ptr();
-    ppargs[i] = &pargs[i];
+    pargs[i] = ts[i].data_ptr();  //数据指针存储于pargs
+    ppargs[i] = &pargs[i];        //所指数据的首个数据的地址
   }
   for (int i = (int)ts.size(); i < (int)pargs.size(); ++i) {
-    pargs[i] = (void*)args[i - ts.size()];
-    ppargs[i] = &pargs[i];
+    pargs[i] = (void*)args[i - ts.size()]; //pargs末尾传入arg的数据地址
+    ppargs[i] = &pargs[i];                //传入首数据地址
   }
 
   int dev = ts[0].device().index();
