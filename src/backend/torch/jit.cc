@@ -14,27 +14,27 @@ namespace torch {
 //TCJ dynamic invoke cuda kernel
 static void static_invoke(const std::vector<::torch::Tensor>& ts, const std::vector<long>& args,
                           int fd) {
-  std::cout << "-----------------static_invoke-----------------" << std::endl;
-  std::cout << "input Tensor shapes:" << std::endl;
-  for (const auto& t : ts) {
-    auto sizes = t.sizes();
-    std::cout << "Tensor shape: ";
-      for (size_t i = 0; i < sizes.size(); ++i) {
-        std::cout << sizes[i];
-        if (i < sizes.size() - 1) {
-            std::cout << " x ";
-        }
-      }
-      std::cout << std::endl;
-  }
+  // std::cout << "-----------------static_invoke-----------------" << std::endl;
+  // std::cout << "input Tensor shapes:" << std::endl;
+  // for (const auto& t : ts) {
+  //   auto sizes = t.sizes();
+  //   std::cout << "Tensor shape: ";
+  //     for (size_t i = 0; i < sizes.size(); ++i) {
+  //       std::cout << sizes[i];
+  //       if (i < sizes.size() - 1) {
+  //           std::cout << " x ";
+  //       }
+  //     }
+  //     std::cout << std::endl;
+  // }
 
-  std::cout << "Arguments:" << std::endl;
-  for (const auto& arg : args) {
-      std::cout << arg << " ";
-  }
-  std::cout << std::endl;
+  // std::cout << "Arguments:" << std::endl;
+  // for (const auto& arg : args) {
+  //     std::cout << arg << " ";
+  // }
+  // std::cout << std::endl;
 
-  std::cout << "fd:" << fd <<std::endl;
+  // std::cout << "fd:" << fd <<std::endl;
 
   std::vector<const void*> pargs(ts.size() + args.size()), ppargs(ts.size() + args.size()); //创建两个类型和大小相同的vector容器
   for (int i = 0; i < (int)ts.size(); ++i) {

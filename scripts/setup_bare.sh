@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+e e#!/usr/bin/env bash
 # Motto: Were It to Benefit My Country, I Would Lay Down My Life!
 # \file: /install.sh
 # \brief:

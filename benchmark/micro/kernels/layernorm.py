@@ -34,93 +34,58 @@ all_bs = [
 
 
 in_out_features = [
-    [4096, 16384],
-    # [16384, 4096],
+    [4096],
+    # [16384],
 ]
 
 
 for bs in all_bs:
-
-    for in_features, out_features in in_out_features:
-
-        input_infos = {"input_0": (bs, in_features)}
-
-        output_infos = {"output_0": (bs, out_features)}
+    for in_features in in_out_features:
+        input_infos = {"input_0": (bs, in_features[0])}
+        output_infos = {"output_0": (bs, in_features[0])} # input output is the same
 
         parameters = {
-            "in_features": in_features,
-            "out_features": out_features,
+            "normalized_shape": in_features[0],
         }
 
-        kernel_name = f"Linear_{bs}_{in_features}_{out_features}"
+        kernel_name = f"LayerNorm_{bs}_{in_features[0]}"
 
-        linear = torch.nn.Linear(in_features, out_features, bias=False).eval()
+        layernorm = torch.nn.LayerNorm(in_features[0], elementwise_affine=False).eval()
 
         tvm_tuner = TVMTuner()
 
         tvm_tuner.import_pt_netlet(
-            "Linear",
+            "LayerNorm",
             "forward",
-            linear,
+            layernorm,
             input_infos,
             output_infos,
             parameters,
-            # log_fname,
         )
 
-        print(f"#### # Linerar {bs} {in_features} {out_features}")
-
-        if tvm_tuner.tune_log_file.exists():
-            print(tvm_tuner.tune_log_file)
-            with open(str(tvm_tuner.tune_log_file)) as f:
-                num_trials = len(f.readlines())
-                print(tvm_tuner.tune_log_file)
-            if num_trials < 2000:
-                print("#### Find incomplete record, continue")
-                tvm_tuner.task_scheduler.load_log_file = str(tvm_tuner.tune_log_file)
-                tvm_tuner.tune_netlet()
-                tvm_tuner.insert_netlet_to_storage()
-            else:
-                print("#### Find tuned kernel, pass")
-                #手动读档重新生成代码写入db
-                tvm_tuner.task_scheduler.load_log_file = str(tvm_tuner.tune_log_file)
-                # tvm_tuner.tune_netlet()
-                tvm_tuner.insert_netlet_to_storage()
-        else:
-            print("#### Start tuning kernel")
-            tvm_tuner.tune_netlet()
-            tvm_tuner.insert_netlet_to_storage()
+        print(f"#### LayerNorm {bs} {in_features[0]}")
+        # if tvm_tuner.tune_log_file.exists():
+        #     print(tvm_tuner.tune_log_file)
+        #     with open(str(tvm_tuner.tune_log_file)) as f:
+        #         num_trials = len(f.readlines())
+        #         print(tvm_tuner.tune_log_file)
+        #     if num_trials < 2000:
+        #         print("#### Find incomplete record, continue")
+        #         tvm_tuner.task_scheduler.load_log_file = str(tvm_tuner.tune_log_file)
+        #         tvm_tuner.tune_netlet()
+        #         tvm_tuner.insert_netlet_to_storage()
+        #     else:
+        #         print("#### Find tuned kernel, pass")
+        #         tvm_tuner.task_scheduler.load_log_file = str(tvm_tuner.tune_log_file)
+        #         tvm_tuner.tune_netlet()
+        #         tvm_tuner.insert_netlet_to_storage()
+        # else:
+        #     print("#### Start tuning kernel")
+        #     tvm_tuner.tune_netlet()
+        #     tvm_tuner.insert_netlet_to_storage()
         
-        ### run 1 gemm ###
-        # 192,4096,16384 kernel input
-        linear0 = torch.nn.Linear(in_features, out_features, bias=False).eval().cuda()
-        x0 = torch.randn((bs, in_features)).cuda()
-        y0 = torch.randn((bs, out_features)).cuda()
 
-        modulelist = torch.nn.ModuleList([linear0])
-        
-        # print("----------------make_jit_kernel@linear_4096.py-----------------")
-        linear_kernel = make_jit_kernel(
-            modules = modulelist,
-            sample_inputs=[x0],
-            method="forward",
-            opt_level="horiz_fuse",
-            objective_func= "fastest",
-        )
-
-        torch.cuda.nvtx.range_push("1 GEMM 4096-16384")
-        torch.cuda.cudart().cudaProfilerStart()
-        linear_kernel(x0, linear0.weight, y0)
-        torch.cuda.cudart().cudaProfilerStop()
-        torch.cuda.nvtx.range_pop()
-
-        # time1 = Timer(
-        #     setup="import torch",   #前置代码
-        #     stmt="model(x0, weight0, y0)",  # 测量的语句
-        #     globals={"model":linear_kernel, "x0": x0, "weight0": linear0.weight, "y0": y0} 
-        # ).timeit(1000).mean * 1e6
-
-        # ### run 2 gemm ###
+        # # #TCJ tune fuse 192,4096,16384 kernel
         # linear0 = torch.nn.Linear(in_features, out_features, bias=False).eval().cuda()
         # x0 = torch.randn((bs, in_features)).cuda()
         # y0 = torch.randn((bs, out_features)).cuda()
@@ -145,20 +110,15 @@ for bs in all_bs:
         # )
         
         # # # print("----------------execute_kernel@linear_4096.py-----------------")
-        # torch.cuda.nvtx.range_push("fuse 2 GEMM 4096-16384")
-        # torch.cuda.cudart().cudaProfilerStart()
-        # linear_kernel(x0, linear0.weight, y0, x1, linear1.weight, y1)
-        # torch.cuda.cudart().cudaProfilerStop()
-        # torch.cuda.nvtx.range_pop()
+        # # linear_kernel(x0, linear0.weight, y0, x1, linear1.weight, y1)
 
-        # time2 = Timer(
+        # time = Timer(
         #     setup="import torch",   #前置代码
         #     stmt="model(x0, weight0, y0, x1, weight1, y1)",  # 测量的语句
         #     globals={"model":linear_kernel, "x0": x0, "weight0": linear0.weight, "y0": y0, "x1":x1,  "weight1": linear1.weight, "y1":y1, } 
         # ).timeit(1000).mean * 1e6
-        
-        # print(f"1 GEMM eslaped time:{time1}")
-        # print(f"fuse 2 GEMM eslaped time:{time2}")
+
+        # print(f"eslaped time:{time}")
 
     
     #TCJ tune rank

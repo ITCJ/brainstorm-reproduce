@@ -10,6 +10,8 @@ total_latency.tsv
 benchmark/swin_moe/results
 docker/id_*
 
+*.log
+
 .cache/*
 ! .cache/kernel_db.sqlite
 ! .cache/kernel_db1.sqlite
